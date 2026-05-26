@@ -5,6 +5,7 @@ import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
+import com.example.demo.sentiment_analysis.redis_service.RedisService;
 import com.example.demo.sentiment_analysis.response_dto.comment_response.commentResponseDetailDto;
 import com.example.demo.sentiment_analysis.response_dto.posts_response.PostDetailDto;
 import com.example.demo.sentiment_analysis.response_dto.posts_response.PostResponseDto;
@@ -15,11 +16,13 @@ import com.example.demo.sentiment_analysis.comment.repository.CommentRepo;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
 import com.example.demo.sentiment_analysis.reaction.repository.ReactionRepo;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
@@ -31,15 +34,27 @@ public class LogicOfPosts {
     private final UserRepo userRepo;
     private final CommentRepo commentRepo;
     private final ReactionRepo reactionRepo;
+    private final RedisService redisService;
 
-    public LogicOfPosts(PostsRepo postsRepo, UserRepo userRepo, CommentRepo commentRepo, ReactionRepo reactionRepo) {
+    public LogicOfPosts(PostsRepo postsRepo, UserRepo userRepo, CommentRepo commentRepo, ReactionRepo reactionRepo, RedisService redisService) {
         this.postsRepo = postsRepo;
         this.userRepo = userRepo;
         this.commentRepo = commentRepo;
         this.reactionRepo = reactionRepo;
+        this.redisService = redisService;
     }
 
     public PaginatedResponse<PostResponseDto> getPostsByUserEmail(String userEmail, Pageable pageable) {
+
+        String cacheKey = feedCacheKey(userEmail, pageable);
+
+        PaginatedResponse<PostResponseDto> cachedResponse = redisService.get(cacheKey,
+                        new TypeReference<PaginatedResponse<PostResponseDto>>() {
+                });
+
+        if (cachedResponse != null) {
+            return cachedResponse;
+        }
 
         Users currentUser = userRepo.findByUserEmail(userEmail);
 
@@ -77,9 +92,13 @@ public class LogicOfPosts {
         response.setLast(!slice.hasNext());
         response.setHasNext(slice.hasNext());
 
+        // cache for short time
+        redisService.set(cacheKey, response, 30L);
+
         return response;
     }
 
+    @Transactional
     public Posts createPostForUser(PostDto postDto, String currentUserEmail) {
         Users currentUser = userRepo.findByUserEmail(currentUserEmail);
         Posts posts = new Posts();
@@ -196,5 +215,9 @@ public class LogicOfPosts {
                 .toList();
 
         return new PostDetailDto(postDto, commentDtos, reactionDtos);
+    }
+
+    private String feedCacheKey(String userEmail, Pageable pageable) {
+        return "feed:" + userEmail + ":page:" + pageable.getPageNumber() + ":size:" + pageable.getPageSize();
     }
 }

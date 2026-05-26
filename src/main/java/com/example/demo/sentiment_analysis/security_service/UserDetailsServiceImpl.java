@@ -2,12 +2,13 @@ package com.example.demo.sentiment_analysis.security_service;
 
 import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
+@Slf4j
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepo userRepo;
@@ -23,6 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                     .password(byUserEmail.getPassword())
                     .roles(byUserEmail.getRoles().toArray(new String[0])).build();
         }
+        log.error("Error is happened due in UserNameNotFoundException");
         throw new UsernameNotFoundException("User Not found exception");
     }
 }

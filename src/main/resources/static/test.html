@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+</head>
+<body>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/stompjs@2.3.3/lib/stomp.min.js"></script>
+
+<script>
+
+    const socket = new SockJS("http://localhost:8080/ws");
+
+    const stompClient = Stomp.over(socket);
+
+    stompClient.connect({}, function () {
+
+        console.log("Connected");
+
+        stompClient.subscribe("/topic/posts-updates", function (message) {
+
+            console.log("Realtime data:");
+            console.log(JSON.parse(message.body));
+        });
+    });
+
+</script>
+
+</body>
+</html>

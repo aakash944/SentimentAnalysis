@@ -6,6 +6,7 @@ import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.response_dto.posts_response.PostResponseDto;
 import com.example.demo.sentiment_analysis.response_dto.reaction_response.ReactionResponseDto;
 import com.example.demo.sentiment_analysis.reaction.service.ReactionService;
+import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -54,5 +55,10 @@ public class ReactionController {
         org.springframework.security.core.userdetails.User principal =
                 (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
         reactionService.createReaction(reactionDto,principal.getUsername());
+    }
+    @GetMapping("/{postId}/count")
+    public ResponseEntity<Long> getReactionCount(@PathVariable ObjectId postId) {
+        long count = reactionService.getReactionCount(postId);
+        return ResponseEntity.ok(count);
     }
 }

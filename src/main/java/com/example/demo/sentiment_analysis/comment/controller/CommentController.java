@@ -2,8 +2,8 @@ package com.example.demo.sentiment_analysis.comment.controller;
 
 import com.example.demo.sentiment_analysis.api_response.ApiResponse;
 import com.example.demo.sentiment_analysis.dto.CommentDto;
-import com.example.demo.sentiment_analysis.comment.service.CommentService;
 import com.example.demo.sentiment_analysis.comment.model.Comment;
+import com.example.demo.sentiment_analysis.comment.service.CommentService;
 import com.example.demo.sentiment_analysis.response_dto.comment_response.CommentResponseDto;
 import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
 import org.bson.types.ObjectId;
@@ -28,7 +28,7 @@ public class CommentController {
 
 
     @GetMapping
-    public ResponseEntity<ApiResponse<PaginatedResponse<CommentResponseDto>>>getAllCommentOfUser(Pageable pageable) {
+    public ResponseEntity<ApiResponse<PaginatedResponse<CommentResponseDto>>> getAllCommentOfUser(Pageable pageable) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
 
@@ -41,11 +41,11 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<Comment> createComment(@RequestBody CommentDto commentDto) throws AccessDeniedException {
+    public ResponseEntity<CommentResponseDto> createComment(@RequestBody CommentDto commentDto) throws AccessDeniedException {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
-        Comment commentCreated = commentService.newComment(commentDto, principal.getUsername());
+        CommentResponseDto commentCreated = commentService.newComment(commentDto, principal.getUsername());
         return new ResponseEntity<>(commentCreated, HttpStatus.CREATED);
     }
 
@@ -65,8 +65,13 @@ public class CommentController {
                 SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
         Comment comment = commentService
-                .updateComment(id, commentDto,principal.getUsername());
+                .updateComment(id, commentDto, principal.getUsername());
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
 
+    @GetMapping("/{postId}/comments/count")
+    public ResponseEntity<Long> getCommentCount(@PathVariable ObjectId postId) {
+        long count = commentService.getCommentCount(postId);
+        return ResponseEntity.ok(count);
+    }
 }

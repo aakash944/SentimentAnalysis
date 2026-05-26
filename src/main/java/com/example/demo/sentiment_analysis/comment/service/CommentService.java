@@ -7,33 +7,40 @@ import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.comment.repository.CommentRepo;
 import com.example.demo.sentiment_analysis.comment.model.Comment;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
+import com.example.demo.sentiment_analysis.redis_service.RedisService;
 import com.example.demo.sentiment_analysis.user.model.Users;
+import com.example.demo.sentiment_analysis.realtime.service.PostRealtimePublisher;
 import com.example.demo.sentiment_analysis.response_dto.comment_response.CommentResponseDto;
 import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.nio.file.AccessDeniedException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
+@Slf4j
 @Service
 public class CommentService {
     private final CommentRepo commentRepo;
     private final UserRepo userRepo;
     private final PostsRepo postsRepo;
+    private final PostRealtimePublisher postRealtimePublisher;
+    private final RedisService redisService;
 
-    public CommentService(CommentRepo commentRepo, UserRepo userRepo, PostsRepo postsRepo) {
+    public CommentService(CommentRepo commentRepo, UserRepo userRepo, PostsRepo postsRepo, PostRealtimePublisher postRealtimePublisher, RedisService redisService) {
         this.commentRepo = commentRepo;
-
         this.userRepo = userRepo;
         this.postsRepo = postsRepo;
+        this.postRealtimePublisher = postRealtimePublisher;
+        this.redisService = redisService;
     }
 
     public PaginatedResponse<CommentResponseDto> getCommentByEmail(String userEmail, Pageable pageable) {
@@ -79,17 +86,16 @@ public class CommentService {
         return response;
     }
 
-    public Comment newComment(CommentDto commentDto, String userEmail) throws AccessDeniedException {
+    @Transactional
+    public CommentResponseDto newComment(CommentDto commentDto, String userEmail) throws AccessDeniedException {
 
         Users currentUser = userRepo.findByUserEmail(userEmail);
-
         if (currentUser == null) {
             throw new UsernameNotFoundException("User not found");
         }
 
         Posts post = postsRepo.findById(commentDto.getPostId())
-                .orElseThrow(() -> new PostsNotFoundException("Post not found exception"));
-
+                .orElseThrow(() -> new PostsNotFoundException("Post not found"));
 
         boolean canAccess =
                 post.getType() == TypeOfAccess.PUBLIC ||
@@ -105,8 +111,19 @@ public class CommentService {
         comment.setText(commentDto.getText());
         comment.setCreatedAt(LocalDateTime.now());
 
-        return commentRepo.save(comment);
+        Comment savedComment = commentRepo.save(comment);
+
+        String countKey = "comment:count:" + post.getId().toHexString();
+        redisService.increment(countKey);
+
+        return new CommentResponseDto(
+                savedComment.getPostId().toHexString(),
+                currentUser.getUserEmail(),
+                savedComment.getText(),
+                savedComment.getCreatedAt()
+        );
     }
+
 
     public void removeComment(ObjectId id, String userEmail) throws AccessDeniedException {
 
@@ -123,7 +140,7 @@ public class CommentService {
                 .orElseThrow(() -> new PostsNotFoundException("Post not found"));
 
         boolean canDelete =
-                        post.getUserId().equals(user.getId()) ||
+                post.getUserId().equals(user.getId()) ||
                         comment.getUserId().equals(user.getId());
 
         if (!canDelete) {
@@ -131,6 +148,15 @@ public class CommentService {
         }
 
         commentRepo.delete(comment);
+
+        // Redis: decrease comment count
+        redisService.decrement(commentCountKey(post.getId()));
+
+        postRealtimePublisher.publishPostUpdate(
+                post.getId(),
+                "COMMENT_DELETED",
+                userEmail
+        );
     }
 
     public Comment updateComment(ObjectId id, CommentDto commentDto, String userEmail) throws AccessDeniedException {
@@ -169,6 +195,32 @@ public class CommentService {
         existingComment.setCreatedAt(LocalDateTime.now());
 
         return commentRepo.save(existingComment);
+    }
+
+    private String commentCountKey(ObjectId postId) {
+        return "comment:count:" + postId.toHexString();
+    }
+
+    public long getCommentCount(ObjectId postId) {
+
+        String key = commentCountKey(postId);
+
+        Long cached = redisService.getLong(key);
+
+        if (cached != null) {
+
+            log.info("CACHE HIT");
+
+            return cached;
+        }
+
+        log.info("CACHE MISS");
+
+        long dbCount = commentRepo.countByPostId(postId);
+
+        redisService.setLong(key, dbCount, null);
+
+        return dbCount;
     }
 }
 

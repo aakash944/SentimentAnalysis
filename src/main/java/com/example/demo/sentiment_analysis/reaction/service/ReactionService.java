@@ -6,10 +6,12 @@ import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
 import com.example.demo.sentiment_analysis.reaction.model.Reaction;
 import com.example.demo.sentiment_analysis.reaction.repository.ReactionRepo;
+import com.example.demo.sentiment_analysis.redis_service.RedisService;
 import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
+import com.example.demo.sentiment_analysis.realtime.service.PostRealtimePublisher;
 import com.example.demo.sentiment_analysis.response_dto.reaction_response.ReactionResponseDto;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
@@ -28,11 +30,15 @@ public class ReactionService {
     private final ReactionRepo reactionRepo;
     private final UserRepo userRepo;
     private final PostsRepo postsRepo;
+    private final PostRealtimePublisher postRealtimePublisher;
+    private final RedisService redisService;
 
-    public ReactionService(ReactionRepo reactionRepo, UserRepo userRepo, PostsRepo postsRepo) {
+    public ReactionService(ReactionRepo reactionRepo, UserRepo userRepo, PostsRepo postsRepo, PostRealtimePublisher postRealtimePublisher, RedisService redisService) {
         this.reactionRepo = reactionRepo;
         this.userRepo = userRepo;
         this.postsRepo = postsRepo;
+        this.postRealtimePublisher = postRealtimePublisher;
+        this.redisService = redisService;
     }
 
     public PaginatedResponse<ReactionResponseDto> getAllReactions(
@@ -84,7 +90,6 @@ public class ReactionService {
     }
 
     public void createReaction(ReactionDto dto, String userEmail) throws AccessDeniedException {
-
         Users user = userRepo.findByUserEmail(userEmail);
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
@@ -110,12 +115,21 @@ public class ReactionService {
 
             if (r.getReactionType().equals(dto.getReactionType())) {
                 reactionRepo.delete(r);
+
+                redisService.decrement(reactionCountKey(post.getId()));
+
+                postRealtimePublisher.publishPostUpdate(
+                        post.getId(),
+                        "REACTION_DELETED",
+                        userEmail
+                );
                 return;
             }
 
             r.setReactionType(dto.getReactionType());
             r.setCreatedAt(LocalDateTime.now());
             reactionRepo.save(r);
+            postRealtimePublisher.publishPostUpdate(post.getId(), "REACTION_UPDATED", userEmail);
             return;
         }
 
@@ -126,5 +140,32 @@ public class ReactionService {
         reaction.setCreatedAt(LocalDateTime.now());
 
         reactionRepo.save(reaction);
+
+        redisService.increment(reactionCountKey(post.getId()));
+
+        postRealtimePublisher.publishPostUpdate(
+                post.getId(),
+                "REACTION_CREATED",
+                userEmail
+        );
+    }
+
+    private String reactionCountKey(ObjectId postId) {
+        return "reaction:count:" + postId.toHexString();
+    }
+    public long getReactionCount(ObjectId postId) {
+
+        String key = reactionCountKey(postId);
+
+        Long cached = redisService.getLong(key);
+        if (cached != null) {
+            return cached;
+        }
+
+        long dbCount = reactionRepo.countByPostId(postId);
+
+        redisService.setLong(key, dbCount, null);
+
+        return dbCount;
     }
 }

@@ -4,7 +4,7 @@ import com.example.demo.sentiment_analysis.dto.UserDto;
 import com.example.demo.sentiment_analysis.security_service.UserDetailsServiceImpl;
 import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.user.service.UserService;
-import com.example.demo.sentiment_analysis.jwt_service.JwtUtili;
+import com.example.demo.sentiment_analysis.jwt.service.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +22,8 @@ public class UserPublic {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final UserDetailsServiceImpl userDetailsService;
-    private final JwtUtili jwtUtil;
-    public UserPublic(UserService userService, AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService, JwtUtili jwtUtil) {
+    private final JwtUtil jwtUtil;
+    public UserPublic(UserService userService, AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil) {
         this.userService = userService;
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
@@ -38,7 +38,7 @@ public class UserPublic {
         return new ResponseEntity<>(users, HttpStatus.CREATED);
     }
 
-    @PostMapping("/login_up")
+    @PostMapping("/login")
     public ResponseEntity<String> Login(@RequestBody UserDto userDto) {
         try {
             authenticationManager.authenticate(
