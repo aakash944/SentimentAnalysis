@@ -5,14 +5,12 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.crypto.KeyGenerator;
+
 import javax.crypto.SecretKey;
 
-
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,17 +18,9 @@ import java.util.Map;
 @Slf4j
 @Service
 public class JwtUtil {
-    private String secretKey = "";
+    @Value("${jwt.secret}")
+    private String secretKey;
 
-    JwtUtil() {
-        try {
-            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
-            SecretKey sk = keyGen.generateKey();
-            secretKey = Base64.getEncoder().encodeToString(sk.getEncoded());
-        } catch (NoSuchAlgorithmException e) {
-            log.error("Error is happened due to", e);
-        }
-    }
 
     public String generateToken(String username) {
 
