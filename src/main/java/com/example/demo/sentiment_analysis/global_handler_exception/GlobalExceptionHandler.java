@@ -2,6 +2,7 @@ package com.example.demo.sentiment_analysis.global_handler_exception;
 
 
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
+import com.example.demo.sentiment_analysis.exception.RefreshTokenException;
 import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.exception.WeakPasswordException;
 import com.example.demo.sentiment_analysis.response_dto.ErrorResponseDto;
@@ -75,6 +76,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
+    @ExceptionHandler(RefreshTokenException.class)
+    public ResponseEntity<ErrorResponseDto> handleRefreshToke(RefreshTokenException ex,
+                                                              HttpServletRequest request) {
+        ErrorResponseDto error = new ErrorResponseDto(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
 //    @ExceptionHandler(Exception.class)
 //    public ResponseEntity<ErrorResponseDto> handleAnyOther(
 //            Exception ex,

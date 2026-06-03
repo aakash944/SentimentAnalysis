@@ -1,6 +1,6 @@
 package com.example.demo.sentiment_analysis.config;
 
-import com.example.demo.sentiment_analysis.jwt.service.JwtFilter;
+import com.example.demo.sentiment_analysis.jwt.JwtFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,7 +1,7 @@
 package com.example.demo.sentiment_analysis.comment.controller;
 
 import com.example.demo.sentiment_analysis.api_response.ApiResponse;
-import com.example.demo.sentiment_analysis.dto.CommentDto;
+import com.example.demo.sentiment_analysis.request_dto.CommentDto;
 import com.example.demo.sentiment_analysis.comment.model.Comment;
 import com.example.demo.sentiment_analysis.comment.service.CommentService;
 import com.example.demo.sentiment_analysis.response_dto.comment_response.CommentResponseDto;

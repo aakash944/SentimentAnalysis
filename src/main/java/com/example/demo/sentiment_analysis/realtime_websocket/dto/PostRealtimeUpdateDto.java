@@ -1,4 +1,4 @@
-package com.example.demo.sentiment_analysis.realtime.dto;
+package com.example.demo.sentiment_analysis.realtime_websocket.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

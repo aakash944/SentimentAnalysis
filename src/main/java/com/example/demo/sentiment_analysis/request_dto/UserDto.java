@@ -1,4 +1,4 @@
-package com.example.demo.sentiment_analysis.dto;
+package com.example.demo.sentiment_analysis.request_dto;
 
 
 import lombok.AllArgsConstructor;

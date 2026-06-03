@@ -5,8 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d426d06a-2bb2-42b3-8202-53559887c8c0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/public_controller/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/service/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/service/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/checker/HealthChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/checker/HealthChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/service/RedisCommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/config/SpringSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/dto/CommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/CommentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/dto/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/dto/ReactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/ReactionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/service/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/service/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/utili/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/controller/FrontControllerOfPosts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/controller/FrontControllerOfPosts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/service/LogicOfPosts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/service/LogicOfPosts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/public_controller/UserPublic.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/controller/ReactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/controller/ReactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/service/ReactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/service/ReactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime/dto/PostRealtimeUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/dto/PostRealtimeUpdateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime/service/PostRealtimePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/service/PostRealtimePublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +38,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>

@@ -1,7 +1,7 @@
 package com.example.demo.sentiment_analysis.user.service;
 
 
-import com.example.demo.sentiment_analysis.dto.UserDto;
+import com.example.demo.sentiment_analysis.request_dto.UserDto;
 import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.exception.WeakPasswordException;
 import com.example.demo.sentiment_analysis.user.model.Users;

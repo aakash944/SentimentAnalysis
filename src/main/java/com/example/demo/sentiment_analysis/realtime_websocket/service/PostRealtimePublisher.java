@@ -1,8 +1,8 @@
-package com.example.demo.sentiment_analysis.realtime.service;
+package com.example.demo.sentiment_analysis.realtime_websocket.service;
 
 import com.example.demo.sentiment_analysis.comment.repository.CommentRepo;
 import com.example.demo.sentiment_analysis.reaction.repository.ReactionRepo;
-import com.example.demo.sentiment_analysis.realtime.dto.PostRealtimeUpdateDto;
+import com.example.demo.sentiment_analysis.realtime_websocket.dto.PostRealtimeUpdateDto;
 import org.bson.types.ObjectId;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;

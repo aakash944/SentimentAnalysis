@@ -1,6 +1,6 @@
 package com.example.demo.sentiment_analysis.comment.service;
 
-import com.example.demo.sentiment_analysis.dto.CommentDto;
+import com.example.demo.sentiment_analysis.request_dto.CommentDto;
 import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.CommentNotFoundException;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
@@ -9,7 +9,7 @@ import com.example.demo.sentiment_analysis.comment.model.Comment;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
 import com.example.demo.sentiment_analysis.redis_service.RedisService;
 import com.example.demo.sentiment_analysis.user.model.Users;
-import com.example.demo.sentiment_analysis.realtime.service.PostRealtimePublisher;
+import com.example.demo.sentiment_analysis.realtime_websocket.service.PostRealtimePublisher;
 import com.example.demo.sentiment_analysis.response_dto.comment_response.CommentResponseDto;
 import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
@@ -88,47 +88,47 @@ public class CommentService {
 
     @Transactional
     public CommentResponseDto newComment(CommentDto commentDto, String userEmail) throws AccessDeniedException {
+        try {
+            Users currentUser = userRepo.findByUserEmail(userEmail);
+            if (currentUser == null) {
+                throw new UsernameNotFoundException("User not found");
+            }
+            Posts post = postsRepo.findById(commentDto.getPostId())
+                    .orElseThrow(() -> new PostsNotFoundException("Posts not found "));
 
-        Users currentUser = userRepo.findByUserEmail(userEmail);
-        if (currentUser == null) {
-            throw new UsernameNotFoundException("User not found");
+            boolean canAccess = post.getType() == TypeOfAccess.PUBLIC ||
+                    post.getUserId().equals(currentUser.getId());
+
+            if (!canAccess) {
+                throw new AccessDeniedException("You cannot comment on this post");
+            }
+
+            Comment comment = new Comment();
+            comment.setUserId(currentUser.getId());
+            comment.setPostId(post.getId());
+            comment.setText(commentDto.getText());
+            comment.setCreatedAt(LocalDateTime.now());
+
+            Comment savedComment = commentRepo.save(comment);
+            String countKey = "comment:count:" + post.getId().toHexString();
+            redisService.increment(countKey);
+
+            return new CommentResponseDto(
+                    savedComment.getPostId().toHexString(),
+                    currentUser.getUserEmail(),
+                    savedComment.getText(),
+                    savedComment.getCreatedAt()
+            );
+
+        } catch (Exception e) {
+            log.error("Exception occurred",e);
+            throw new CommentNotFoundException("Comment is not created Exception");
         }
-
-        Posts post = postsRepo.findById(commentDto.getPostId())
-                .orElseThrow(() -> new PostsNotFoundException("Post not found"));
-
-        boolean canAccess =
-                post.getType() == TypeOfAccess.PUBLIC ||
-                        post.getUserId().equals(currentUser.getId());
-
-        if (!canAccess) {
-            throw new AccessDeniedException("You cannot comment on this post");
-        }
-
-        Comment comment = new Comment();
-        comment.setUserId(currentUser.getId());
-        comment.setPostId(post.getId());
-        comment.setText(commentDto.getText());
-        comment.setCreatedAt(LocalDateTime.now());
-
-        Comment savedComment = commentRepo.save(comment);
-
-        String countKey = "comment:count:" + post.getId().toHexString();
-        redisService.increment(countKey);
-
-        return new CommentResponseDto(
-                savedComment.getPostId().toHexString(),
-                currentUser.getUserEmail(),
-                savedComment.getText(),
-                savedComment.getCreatedAt()
-        );
     }
 
 
     public void removeComment(ObjectId id, String userEmail) throws AccessDeniedException {
-
         Users user = userRepo.findByUserEmail(userEmail);
-
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }

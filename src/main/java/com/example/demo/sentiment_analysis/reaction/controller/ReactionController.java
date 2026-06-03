@@ -1,9 +1,8 @@
 package com.example.demo.sentiment_analysis.reaction.controller;
 
 import com.example.demo.sentiment_analysis.api_response.ApiResponse;
-import com.example.demo.sentiment_analysis.dto.ReactionDto;
+import com.example.demo.sentiment_analysis.request_dto.ReactionDto;
 import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
-import com.example.demo.sentiment_analysis.response_dto.posts_response.PostResponseDto;
 import com.example.demo.sentiment_analysis.response_dto.reaction_response.ReactionResponseDto;
 import com.example.demo.sentiment_analysis.reaction.service.ReactionService;
 import org.bson.types.ObjectId;

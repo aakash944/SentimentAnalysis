@@ -1,6 +1,6 @@
 package com.example.demo.sentiment_analysis.reaction.service;
 
-import com.example.demo.sentiment_analysis.dto.ReactionDto;
+import com.example.demo.sentiment_analysis.request_dto.ReactionDto;
 import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
@@ -11,7 +11,7 @@ import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
-import com.example.demo.sentiment_analysis.realtime.service.PostRealtimePublisher;
+import com.example.demo.sentiment_analysis.realtime_websocket.service.PostRealtimePublisher;
 import com.example.demo.sentiment_analysis.response_dto.reaction_response.ReactionResponseDto;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
