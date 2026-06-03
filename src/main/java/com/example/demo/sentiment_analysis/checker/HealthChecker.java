@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthChecker {
     @GetMapping("/health_checker")
     public String status() {
-        log.info("Hello i am in comment");
+        log.info("Hello i am in Health_Checker");
         return "Ok fine";
     }
 }

@@ -1,0 +1,4 @@
+26-06-03 17:25:23.956 [http-nio-8080-exec-4] INFO  c.e.d.s.checker.HealthChecker - Hello i am in Health_Checker 
+26-06-03 17:25:29.081 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping... 
+26-06-03 17:25:29.082 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@32e65852]] 
+26-06-03 17:25:29.082 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped. 
