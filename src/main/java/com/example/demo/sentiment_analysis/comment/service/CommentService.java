@@ -1,7 +1,7 @@
 package com.example.demo.sentiment_analysis.comment.service;
 
 import com.example.demo.sentiment_analysis.comment.comment_request.CommentRequest;
-import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
+import com.example.demo.sentiment_analysis.posts.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.CommentNotFoundException;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.comment.repository.CommentRepo;
@@ -70,6 +70,8 @@ public class CommentService {
                             comment.getPostId().toHexString(),
                             commentUser != null ? commentUser.getUserEmail() : "unknown",
                             comment.getText(),
+                            comment.getSentiment(),
+                            comment.getConfidence(),
                             comment.getUpdatedAt()
                     );
                 })
@@ -118,6 +120,8 @@ public class CommentService {
                     savedComment.getPostId().toHexString(),
                     currentUser.getUserEmail(),
                     savedComment.getText(),
+                    savedComment.getSentiment(),
+                    savedComment.getConfidence(),
                     savedComment.getUpdatedAt()
             );
         } catch (Exception e) {

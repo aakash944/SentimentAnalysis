@@ -1,10 +1,7 @@
 package com.example.demo.sentiment_analysis.global_handler_exception;
 
 
-import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
-import com.example.demo.sentiment_analysis.exception.RefreshTokenException;
-import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
-import com.example.demo.sentiment_analysis.exception.WeakPasswordException;
+import com.example.demo.sentiment_analysis.exception.*;
 import com.example.demo.sentiment_analysis.global_handler_exception.exception_dto.ExceptionResponseDto;
 
 import javax.servlet.http.HttpServletRequest;
@@ -83,6 +80,11 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+    }
+    @ExceptionHandler(SentimentAnalysisException.class)
+    public ResponseEntity<ExceptionResponseDto> handleSentimentError(SentimentAnalysisException ex) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(new ExceptionResponseDto(ex.getMessage()));
     }
 //    @ExceptionHandler(Exception.class)
 //    public ResponseEntity<ErrorResponseDto> handleAnyOther(

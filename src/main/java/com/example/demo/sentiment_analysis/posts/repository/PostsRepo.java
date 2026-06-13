@@ -1,6 +1,6 @@
 package com.example.demo.sentiment_analysis.posts.repository;
 
-import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
+import com.example.demo.sentiment_analysis.posts.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;

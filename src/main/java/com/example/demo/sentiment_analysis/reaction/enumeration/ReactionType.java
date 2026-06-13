@@ -1,4 +1,4 @@
-package com.example.demo.sentiment_analysis.enumeration;
+package com.example.demo.sentiment_analysis.reaction.enumeration;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 

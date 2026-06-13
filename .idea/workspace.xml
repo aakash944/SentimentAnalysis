@@ -6,51 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="d426d06a-2bb2-42b3-8202-53559887c8c0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/journalApp-26-06-03_17-24.0.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/journalApp.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/admin_controller/AdminInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/admin_controller/AdminInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/api_response/ApiResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/error_dto/ApiResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/checker/HealthChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/checker/HealthChecker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_response/CommentResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_response/CommentResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/repository/CommentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/repository/CommentRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/redis/config/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security/config/SpringSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/config/WebSocketConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/enumeration/ReactionType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/enumeration/ReactionType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/enumeration/TypeOfAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/enumeration/TypeOfAccess.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/public_controller/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/controller/FrontControllerOfPosts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/controller/FrontControllerOfPosts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/model/Posts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/model/Posts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/post_request_dto/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/post_request_dto/PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/repository/PostsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/repository/PostsRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/service/LogicOfPosts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/service/LogicOfPosts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/public_controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/public_controller/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/controller/ReactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/controller/ReactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/dto/ReactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/dto/ReactionDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/model/Reaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/model/Reaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/reaction_response/ReactionResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/reaction_response/ReactionResponseDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/service/ReactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/service/ReactionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/service/PostRealtimePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/service/PostRealtimePublisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/redis_service/RedisService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/redis/service/RedisService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/CommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_request/CommentRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/public_controller/login/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/LogoutRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/request/LogoutRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/post_request_dto/PostDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/ReactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/dto/ReactionDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/RefreshRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/request/RefreshRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/request_dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/AuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/jwt/response/AuthResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/ErrorResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/exception_dto/ExceptionResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/PaginatedResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/slice_response_dto/PaginatedResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/comment_response/CommentResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_response/CommentResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/comment_response/commentResponseDetailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_response/CommentResponseDetailDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/posts_response/PostDetailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/posts_response/PostDetailDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/posts_response/PostResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/posts_response/PostResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/reaction_response/ReactionResponseDetailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/reaction_response/ReactionResponseDetailDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/reaction_response/ReactionResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/reaction_response/ReactionResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/response_dto/user_response/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/user_response/UserResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security_service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security/config/SpringSecurity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +32,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
+        <option value="Enum" />
         <option value="Exception" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -70,7 +42,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -80,23 +52,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.DemoApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHELLCHECK.PATH": "I do mind",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ACER/Downloads/Analysis_with_websocket",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.DemoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;I do mind&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ACER/Downloads/Analysis_with_websocket&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.DemoApplication" />

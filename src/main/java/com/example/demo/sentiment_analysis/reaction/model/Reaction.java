@@ -1,6 +1,6 @@
 package com.example.demo.sentiment_analysis.reaction.model;
 
-import com.example.demo.sentiment_analysis.enumeration.ReactionType;
+import com.example.demo.sentiment_analysis.reaction.enumeration.ReactionType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;

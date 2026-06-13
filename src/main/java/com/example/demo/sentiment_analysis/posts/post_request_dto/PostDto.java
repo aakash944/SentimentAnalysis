@@ -1,6 +1,6 @@
 package com.example.demo.sentiment_analysis.posts.post_request_dto;
 
-import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
+import com.example.demo.sentiment_analysis.posts.enumeration.TypeOfAccess;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,7 @@
 package com.example.demo.sentiment_analysis.reaction.service;
 
 import com.example.demo.sentiment_analysis.reaction.dto.ReactionDto;
-import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
+import com.example.demo.sentiment_analysis.posts.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
 import com.example.demo.sentiment_analysis.reaction.model.Reaction;

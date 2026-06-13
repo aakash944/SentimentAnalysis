@@ -1,6 +1,6 @@
 package com.example.demo.sentiment_analysis.posts.model;
 
-import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
+import com.example.demo.sentiment_analysis.posts.enumeration.TypeOfAccess;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
