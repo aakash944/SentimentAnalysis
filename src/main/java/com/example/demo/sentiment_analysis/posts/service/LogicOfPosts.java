@@ -1,17 +1,17 @@
 package com.example.demo.sentiment_analysis.posts.service;
 
-import com.example.demo.sentiment_analysis.request_dto.PostDto;
+import com.example.demo.sentiment_analysis.posts.post_request_dto.PostDto;
 import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
-import com.example.demo.sentiment_analysis.redis_service.RedisService;
-import com.example.demo.sentiment_analysis.response_dto.comment_response.commentResponseDetailDto;
-import com.example.demo.sentiment_analysis.response_dto.posts_response.PostDetailDto;
-import com.example.demo.sentiment_analysis.response_dto.posts_response.PostResponseDto;
-import com.example.demo.sentiment_analysis.response_dto.reaction_response.ReactionResponseDetailDto;
+import com.example.demo.sentiment_analysis.redis.service.RedisService;
+import com.example.demo.sentiment_analysis.comment.comment_response.CommentResponseDetailDto;
+import com.example.demo.sentiment_analysis.posts.posts_response.PostDetailDto;
+import com.example.demo.sentiment_analysis.posts.posts_response.PostResponseDto;
+import com.example.demo.sentiment_analysis.reaction.reaction_response.ReactionResponseDetailDto;
 import com.example.demo.sentiment_analysis.user.model.Users;
-import com.example.demo.sentiment_analysis.response_dto.*;
+import com.example.demo.sentiment_analysis.slice_response_dto.*;
 import com.example.demo.sentiment_analysis.comment.repository.CommentRepo;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
 import com.example.demo.sentiment_analysis.reaction.repository.ReactionRepo;
@@ -47,7 +47,6 @@ public class LogicOfPosts {
     public PaginatedResponse<PostResponseDto> getPostsByUserEmail(String userEmail, Pageable pageable) {
 
         String cacheKey = feedCacheKey(userEmail, pageable);
-
         PaginatedResponse<PostResponseDto> cachedResponse = redisService.get(cacheKey,
                         new TypeReference<PaginatedResponse<PostResponseDto>>() {
                 });
@@ -190,14 +189,14 @@ public class LogicOfPosts {
                 reactionCount
         );
 
-        List<commentResponseDetailDto> commentDtos = commentRepo.findByPostId(postId).stream()
+        List<CommentResponseDetailDto> commentDtos = commentRepo.findByPostId(postId).stream()
                 .map(comment -> {
                     Users commentUser = userRepo.findById(comment.getUserId()).orElse(null);
 
-                    return new commentResponseDetailDto(
+                    return new CommentResponseDetailDto(
                             comment.getText(),
                             commentUser != null ? commentUser.getUserEmail() : "unknown",
-                            comment.getCreatedAt()
+                            comment.getUpdatedAt()
                     );
                 })
                 .toList();

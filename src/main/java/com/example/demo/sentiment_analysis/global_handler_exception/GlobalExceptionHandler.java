@@ -5,7 +5,7 @@ import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.exception.RefreshTokenException;
 import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.exception.WeakPasswordException;
-import com.example.demo.sentiment_analysis.response_dto.ErrorResponseDto;
+import com.example.demo.sentiment_analysis.global_handler_exception.exception_dto.ExceptionResponseDto;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,11 +21,9 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(PostsNotFoundException.class)
-    public ResponseEntity<ErrorResponseDto> handlePost(
-            PostsNotFoundException ex,
-            HttpServletRequest request
+    public ResponseEntity<ExceptionResponseDto> handlePost(PostsNotFoundException ex, HttpServletRequest request
     ) {
-        ErrorResponseDto error = new ErrorResponseDto(
+        ExceptionResponseDto error = new ExceptionResponseDto(
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
@@ -35,11 +33,11 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<ErrorResponseDto> handleUser(
+    public ResponseEntity<ExceptionResponseDto> handleUser(
             UserNotFoundException ex,
             HttpServletRequest request
     ) {
-        ErrorResponseDto error = new ErrorResponseDto(
+        ExceptionResponseDto error = new ExceptionResponseDto(
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
@@ -49,11 +47,11 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<ErrorResponseDto> handleInvalidObjectId(
+    public ResponseEntity<ExceptionResponseDto> handleInvalidObjectId(
             MethodArgumentTypeMismatchException ex,
             HttpServletRequest request
     ) {
-        ErrorResponseDto error = new ErrorResponseDto(
+        ExceptionResponseDto error = new ExceptionResponseDto(
                 HttpStatus.BAD_REQUEST.value(),
                 "Invalid ID format",
                 LocalDateTime.now(),
@@ -63,11 +61,11 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(WeakPasswordException.class)
-    public ResponseEntity<com.example.demo.sentiment_analysis.response_dto.ErrorResponseDto> handleWeakPassword(
+    public ResponseEntity<ExceptionResponseDto> handleWeakPassword(
             WeakPasswordException ex,
             HttpServletRequest request
     ) {
-        ErrorResponseDto error = new ErrorResponseDto(
+        ExceptionResponseDto error = new ExceptionResponseDto(
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),
@@ -77,9 +75,8 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(RefreshTokenException.class)
-    public ResponseEntity<ErrorResponseDto> handleRefreshToke(RefreshTokenException ex,
-                                                              HttpServletRequest request) {
-        ErrorResponseDto error = new ErrorResponseDto(
+    public ResponseEntity<ExceptionResponseDto> handleRefreshToke(RefreshTokenException ex, HttpServletRequest request) {
+        ExceptionResponseDto error = new ExceptionResponseDto(
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
                 LocalDateTime.now(),

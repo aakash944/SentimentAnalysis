@@ -1,18 +1,18 @@
 package com.example.demo.sentiment_analysis.reaction.service;
 
-import com.example.demo.sentiment_analysis.request_dto.ReactionDto;
+import com.example.demo.sentiment_analysis.reaction.dto.ReactionDto;
 import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
 import com.example.demo.sentiment_analysis.reaction.model.Reaction;
 import com.example.demo.sentiment_analysis.reaction.repository.ReactionRepo;
-import com.example.demo.sentiment_analysis.redis_service.RedisService;
+import com.example.demo.sentiment_analysis.redis.service.RedisService;
 import com.example.demo.sentiment_analysis.user.model.Users;
-import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
+import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
 import com.example.demo.sentiment_analysis.realtime_websocket.service.PostRealtimePublisher;
-import com.example.demo.sentiment_analysis.response_dto.reaction_response.ReactionResponseDto;
+import com.example.demo.sentiment_analysis.reaction.reaction_response.ReactionResponseDto;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -41,11 +41,7 @@ public class ReactionService {
         this.redisService = redisService;
     }
 
-    public PaginatedResponse<ReactionResponseDto> getAllReactions(
-            String userEmail,
-            Pageable pageable
-    ) {
-
+    public PaginatedResponse<ReactionResponseDto> getAllReactions(String userEmail, Pageable pageable) {
         Users user = userRepo.findByUserEmail(userEmail);
 
         if (user == null) {
@@ -94,11 +90,9 @@ public class ReactionService {
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-
         Posts post = postsRepo.findById(dto.getPostId())
                 .orElseThrow(() -> new PostsNotFoundException("Post not found"));
 
-        // ACCESS RULE (your requirement)
         boolean allowed =
                 post.getType() == TypeOfAccess.PUBLIC ||
                         post.getUserId().equals(user.getId());
@@ -106,7 +100,6 @@ public class ReactionService {
         if (!allowed) {
             throw new AccessDeniedException("Cannot react on private post");
         }
-
         Optional<Reaction> existing =
                 reactionRepo.findByUserIdAndPostId(user.getId(), post.getId());
 
@@ -129,7 +122,8 @@ public class ReactionService {
             r.setReactionType(dto.getReactionType());
             r.setCreatedAt(LocalDateTime.now());
             reactionRepo.save(r);
-            postRealtimePublisher.publishPostUpdate(post.getId(), "REACTION_UPDATED", userEmail);
+            postRealtimePublisher.publishPostUpdate(post.getId(),
+                    "REACTION_UPDATED", userEmail);
             return;
         }
 
@@ -151,6 +145,7 @@ public class ReactionService {
     }
 
     private String reactionCountKey(ObjectId postId) {
+
         return "reaction:count:" + postId.toHexString();
     }
     public long getReactionCount(ObjectId postId) {

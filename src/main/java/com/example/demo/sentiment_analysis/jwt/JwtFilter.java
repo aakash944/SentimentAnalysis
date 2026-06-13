@@ -1,7 +1,7 @@
 package com.example.demo.sentiment_analysis.jwt;
 
 import com.example.demo.sentiment_analysis.jwt.utili.JwtUtil;
-import com.example.demo.sentiment_analysis.security_service.UserDetailsServiceImpl;
+import com.example.demo.sentiment_analysis.security.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

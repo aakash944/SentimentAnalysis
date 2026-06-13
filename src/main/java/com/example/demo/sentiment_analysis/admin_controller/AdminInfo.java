@@ -1,8 +1,8 @@
 package com.example.demo.sentiment_analysis.admin_controller;
 
-import com.example.demo.sentiment_analysis.api_response.ApiResponse;
-import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
-import com.example.demo.sentiment_analysis.response_dto.user_response.UserResponse;
+import com.example.demo.sentiment_analysis.error_dto.ApiResponse;
+import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
+import com.example.demo.sentiment_analysis.user.user_response.UserResponse;
 import com.example.demo.sentiment_analysis.user.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

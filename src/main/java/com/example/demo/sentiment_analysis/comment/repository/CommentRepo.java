@@ -13,6 +13,5 @@ public interface CommentRepo extends MongoRepository<Comment, ObjectId> {
     void deleteByUserId(ObjectId userId);
     List<Comment> findByPostId(ObjectId postId);
     Slice<Comment> findByPostIdIn(List<ObjectId> publicPostIds, Pageable pageable);
-
     long countByPostId(ObjectId postId);
 }

@@ -16,19 +16,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Comment {
-
     @Id
     private ObjectId id;
-
     @Indexed
-
     private ObjectId userId;
-
     @Indexed
     private ObjectId postId;
-
     private String text;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

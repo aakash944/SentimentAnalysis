@@ -1,7 +1,7 @@
 package com.example.demo.sentiment_analysis.user.controller;
 
 
-import com.example.demo.sentiment_analysis.request_dto.UserDto;
+import com.example.demo.sentiment_analysis.user.dto.UserDto;
 import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.user.service.UserService;
 
@@ -10,8 +10,6 @@ import org.bson.types.ObjectId;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
 
 @RestController
 @RequestMapping("/api/user")

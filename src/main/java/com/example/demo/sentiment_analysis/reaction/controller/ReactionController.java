@@ -1,9 +1,9 @@
 package com.example.demo.sentiment_analysis.reaction.controller;
 
-import com.example.demo.sentiment_analysis.api_response.ApiResponse;
-import com.example.demo.sentiment_analysis.request_dto.ReactionDto;
-import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
-import com.example.demo.sentiment_analysis.response_dto.reaction_response.ReactionResponseDto;
+import com.example.demo.sentiment_analysis.error_dto.ApiResponse;
+import com.example.demo.sentiment_analysis.reaction.dto.ReactionDto;
+import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
+import com.example.demo.sentiment_analysis.reaction.reaction_response.ReactionResponseDto;
 import com.example.demo.sentiment_analysis.reaction.service.ReactionService;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;

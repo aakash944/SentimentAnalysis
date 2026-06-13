@@ -16,11 +16,7 @@ public class PostRealtimePublisher {
     private final CommentRepo commentRepo;
     private final ReactionRepo reactionRepo;
 
-    public PostRealtimePublisher(
-            SimpMessagingTemplate messagingTemplate,
-            CommentRepo commentRepo,
-            ReactionRepo reactionRepo
-    ) {
+    public PostRealtimePublisher(SimpMessagingTemplate messagingTemplate, CommentRepo commentRepo, ReactionRepo reactionRepo) {
         this.messagingTemplate = messagingTemplate;
         this.commentRepo = commentRepo;
         this.reactionRepo = reactionRepo;
@@ -40,7 +36,8 @@ public class PostRealtimePublisher {
         );
 
 
-        messagingTemplate.convertAndSend("/topic/posts-updates", payload);
+        messagingTemplate.convertAndSend("/topic/posts/"
+                + postId.toHexString(), payload);
 
         System.out.println("Realtime event emitted");
         System.out.println("Realtime event emitted: " + payload);

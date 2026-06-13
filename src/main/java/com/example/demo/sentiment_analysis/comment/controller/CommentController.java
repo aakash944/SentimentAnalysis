@@ -1,11 +1,11 @@
 package com.example.demo.sentiment_analysis.comment.controller;
 
-import com.example.demo.sentiment_analysis.api_response.ApiResponse;
-import com.example.demo.sentiment_analysis.request_dto.CommentDto;
+import com.example.demo.sentiment_analysis.error_dto.ApiResponse;
+import com.example.demo.sentiment_analysis.comment.comment_request.CommentRequest;
 import com.example.demo.sentiment_analysis.comment.model.Comment;
 import com.example.demo.sentiment_analysis.comment.service.CommentService;
-import com.example.demo.sentiment_analysis.response_dto.comment_response.CommentResponseDto;
-import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
+import com.example.demo.sentiment_analysis.comment.comment_response.CommentResponseDto;
+import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -25,8 +25,6 @@ public class CommentController {
     public CommentController(CommentService commentService) {
         this.commentService = commentService;
     }
-
-
     @GetMapping
     public ResponseEntity<ApiResponse<PaginatedResponse<CommentResponseDto>>> getAllCommentOfUser(Pageable pageable) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -41,7 +39,7 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<CommentResponseDto> createComment(@RequestBody CommentDto commentDto) throws AccessDeniedException {
+    public ResponseEntity<CommentResponseDto> createComment(@RequestBody CommentRequest commentDto) throws AccessDeniedException {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
@@ -60,7 +58,7 @@ public class CommentController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Comment> updateComment(@PathVariable ObjectId id,
-                                                 @RequestBody CommentDto commentDto) throws AccessDeniedException {
+                                                 @RequestBody CommentRequest commentDto) throws AccessDeniedException {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();

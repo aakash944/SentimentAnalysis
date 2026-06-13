@@ -1,17 +1,18 @@
 package com.example.demo.sentiment_analysis.comment.service;
 
-import com.example.demo.sentiment_analysis.request_dto.CommentDto;
+import com.example.demo.sentiment_analysis.comment.comment_request.CommentRequest;
 import com.example.demo.sentiment_analysis.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.CommentNotFoundException;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
 import com.example.demo.sentiment_analysis.comment.repository.CommentRepo;
 import com.example.demo.sentiment_analysis.comment.model.Comment;
+import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
-import com.example.demo.sentiment_analysis.redis_service.RedisService;
+import com.example.demo.sentiment_analysis.redis.service.RedisService;
 import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.realtime_websocket.service.PostRealtimePublisher;
-import com.example.demo.sentiment_analysis.response_dto.comment_response.CommentResponseDto;
-import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
+import com.example.demo.sentiment_analysis.comment.comment_response.CommentResponseDto;
+import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
 import lombok.extern.slf4j.Slf4j;
@@ -46,9 +47,8 @@ public class CommentService {
     public PaginatedResponse<CommentResponseDto> getCommentByEmail(String userEmail, Pageable pageable) {
 
         Users user = userRepo.findByUserEmail(userEmail);
-
         if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+            throw new UserNotFoundException("User not found");
         }
 
         List<ObjectId> visiblePostIds = postsRepo.findAll().stream()
@@ -70,7 +70,7 @@ public class CommentService {
                             comment.getPostId().toHexString(),
                             commentUser != null ? commentUser.getUserEmail() : "unknown",
                             comment.getText(),
-                            comment.getCreatedAt()
+                            comment.getUpdatedAt()
                     );
                 })
                 .toList();
@@ -87,11 +87,11 @@ public class CommentService {
     }
 
     @Transactional
-    public CommentResponseDto newComment(CommentDto commentDto, String userEmail) throws AccessDeniedException {
+    public CommentResponseDto newComment(CommentRequest commentDto, String userEmail) throws AccessDeniedException {
         try {
             Users currentUser = userRepo.findByUserEmail(userEmail);
             if (currentUser == null) {
-                throw new UsernameNotFoundException("User not found");
+                throw new UserNotFoundException("User not found");
             }
             Posts post = postsRepo.findById(commentDto.getPostId())
                     .orElseThrow(() -> new PostsNotFoundException("Posts not found "));
@@ -107,94 +107,92 @@ public class CommentService {
             comment.setUserId(currentUser.getId());
             comment.setPostId(post.getId());
             comment.setText(commentDto.getText());
-            comment.setCreatedAt(LocalDateTime.now());
+            comment.setUpdatedAt(LocalDateTime.now());
 
             Comment savedComment = commentRepo.save(comment);
             String countKey = "comment:count:" + post.getId().toHexString();
             redisService.increment(countKey);
-
+            postRealtimePublisher.publishPostUpdate(post.getId(),
+                    "COMMENT_CREATED", userEmail);
             return new CommentResponseDto(
                     savedComment.getPostId().toHexString(),
                     currentUser.getUserEmail(),
                     savedComment.getText(),
-                    savedComment.getCreatedAt()
+                    savedComment.getUpdatedAt()
             );
-
         } catch (Exception e) {
-            log.error("Exception occurred",e);
-            throw new CommentNotFoundException("Comment is not created Exception");
+            log.error("Not created comment from {} ", userEmail, e);
+            throw e;
         }
     }
-
 
     public void removeComment(ObjectId id, String userEmail) throws AccessDeniedException {
-        Users user = userRepo.findByUserEmail(userEmail);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+        try {
+            Users user = userRepo.findByUserEmail(userEmail);
+            if (user == null) {
+                throw new UserNotFoundException("User not found");
+            }
+            Comment comment = commentRepo.findById(id)
+                    .orElseThrow(() -> new CommentNotFoundException("Comment not found"));
+
+            Posts post = postsRepo.findById(comment.getPostId())
+                    .orElseThrow(() -> new PostsNotFoundException("Post not found"));
+
+            boolean canDelete = post.getUserId().equals(user.getId()) ||
+                    comment.getUserId().equals(user.getId());
+
+            if (!canDelete) {
+                throw new AccessDeniedException("Not allowed to delete this comment");
+            }
+
+            commentRepo.delete(comment);
+
+            redisService.decrement(commentCountKey(post.getId()));
+
+            postRealtimePublisher.publishPostUpdate(
+                    post.getId(),
+                    "COMMENT_DELETED",
+                    userEmail
+            );
+        } catch (Exception e) {
+            log.error("Failed to delete comment {} by user {}", id, userEmail, e);
         }
-
-        Comment comment = commentRepo.findById(id)
-                .orElseThrow(() -> new CommentNotFoundException("Comment not found"));
-
-        Posts post = postsRepo.findById(comment.getPostId())
-                .orElseThrow(() -> new PostsNotFoundException("Post not found"));
-
-        boolean canDelete =
-                post.getUserId().equals(user.getId()) ||
-                        comment.getUserId().equals(user.getId());
-
-        if (!canDelete) {
-            throw new AccessDeniedException("Not allowed to delete this comment");
-        }
-
-        commentRepo.delete(comment);
-
-        // Redis: decrease comment count
-        redisService.decrement(commentCountKey(post.getId()));
-
-        postRealtimePublisher.publishPostUpdate(
-                post.getId(),
-                "COMMENT_DELETED",
-                userEmail
-        );
     }
 
-    public Comment updateComment(ObjectId id, CommentDto commentDto, String userEmail) throws AccessDeniedException {
+    public Comment updateComment(ObjectId id, CommentRequest commentDto, String userEmail) throws AccessDeniedException {
+        try {
+            Users user = userRepo.findByUserEmail(userEmail);
+            if (user == null) {
+                throw new UsernameNotFoundException("User not found");
+            }
+            Comment existingComment = commentRepo.findById(id)
+                    .orElseThrow(() -> new CommentNotFoundException("Comment not found"));
 
-        Users user = userRepo.findByUserEmail(userEmail);
+            Posts post = postsRepo.findById(existingComment.getPostId())
+                    .orElseThrow(() -> new PostsNotFoundException("Post not found"));
 
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+
+            if (!existingComment.getUserId().equals(user.getId())) {
+                throw new AccessDeniedException("You can only update your own comment");
+            }
+
+            boolean canAccess =
+                    post.getType() == TypeOfAccess.PUBLIC ||
+                            post.getUserId().equals(user.getId());
+
+            if (!canAccess) {
+                throw new AccessDeniedException("Post not accessible");
+            }
+
+            if (commentDto.getText() != null && !commentDto.getText().isBlank()) {
+                existingComment.setText(commentDto.getText());
+            }
+            existingComment.setUpdatedAt(LocalDateTime.now());
+            return commentRepo.save(existingComment);
+        } catch (Exception e) {
+            log.error("Failed to update comment {} by user {}", id, userEmail, e);
+            throw e;
         }
-
-        Comment existingComment = commentRepo.findById(id)
-                .orElseThrow(() -> new CommentNotFoundException("Comment not found"));
-
-        Posts post = postsRepo.findById(existingComment.getPostId())
-                .orElseThrow(() -> new PostsNotFoundException("Post not found"));
-
-        // ownership check
-        if (!existingComment.getUserId().equals(user.getId())) {
-            throw new AccessDeniedException("You can only update your own comment");
-        }
-
-        // optional: check post visibility
-        boolean canAccess =
-                post.getType() == TypeOfAccess.PUBLIC ||
-                        post.getUserId().equals(user.getId());
-
-        if (!canAccess) {
-            throw new AccessDeniedException("Post not accessible");
-        }
-
-        // UPDATE (NOT CREATE)
-        if (commentDto.getText() != null && !commentDto.getText().isBlank()) {
-            existingComment.setText(commentDto.getText());
-        }
-
-        existingComment.setCreatedAt(LocalDateTime.now());
-
-        return commentRepo.save(existingComment);
     }
 
     private String commentCountKey(ObjectId postId) {
@@ -213,9 +211,7 @@ public class CommentService {
 
             return cached;
         }
-
         log.info("CACHE MISS");
-
         long dbCount = commentRepo.countByPostId(postId);
 
         redisService.setLong(key, dbCount, null);

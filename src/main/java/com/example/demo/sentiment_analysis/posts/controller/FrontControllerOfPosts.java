@@ -1,11 +1,11 @@
 package com.example.demo.sentiment_analysis.posts.controller;
 
-import com.example.demo.sentiment_analysis.api_response.ApiResponse;
-import com.example.demo.sentiment_analysis.request_dto.PostDto;
+import com.example.demo.sentiment_analysis.error_dto.ApiResponse;
+import com.example.demo.sentiment_analysis.posts.post_request_dto.PostDto;
 import com.example.demo.sentiment_analysis.posts.model.Posts;
-import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
-import com.example.demo.sentiment_analysis.response_dto.posts_response.PostDetailDto;
-import com.example.demo.sentiment_analysis.response_dto.posts_response.PostResponseDto;
+import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
+import com.example.demo.sentiment_analysis.posts.posts_response.PostDetailDto;
+import com.example.demo.sentiment_analysis.posts.posts_response.PostResponseDto;
 import com.example.demo.sentiment_analysis.posts.service.LogicOfPosts;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;

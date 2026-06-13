@@ -1,16 +1,17 @@
 package com.example.demo.sentiment_analysis.user.service;
 
 
-import com.example.demo.sentiment_analysis.request_dto.UserDto;
+import com.example.demo.sentiment_analysis.user.dto.UserDto;
 import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.exception.WeakPasswordException;
 import com.example.demo.sentiment_analysis.user.model.Users;
-import com.example.demo.sentiment_analysis.response_dto.PaginatedResponse;
+import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.comment.repository.CommentRepo;
 import com.example.demo.sentiment_analysis.posts.repository.PostsRepo;
 import com.example.demo.sentiment_analysis.reaction.repository.ReactionRepo;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
-import com.example.demo.sentiment_analysis.response_dto.user_response.UserResponse;
+import com.example.demo.sentiment_analysis.user.user_response.UserResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Pageable;
@@ -24,6 +25,7 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@Slf4j
 public class UserService {
 
     private static final Set<String> COMMON_PASSWORDS = Set.of(
@@ -43,9 +45,7 @@ public class UserService {
     }
 
     public PaginatedResponse<UserResponse> getUserDb(Pageable pageable) {
-
         Slice<Users> slice = userRepo.findAll(pageable);
-
         List<UserResponse> content = slice.getContent().stream()
                 .map(user -> new UserResponse(
                         user.getUserEmail(),
@@ -60,7 +60,6 @@ public class UserService {
         response.setFirst(slice.isFirst());
         response.setLast(!slice.hasNext());
         response.setHasNext(slice.hasNext());
-
         return response;
     }
 
@@ -115,28 +114,41 @@ public class UserService {
         }
     }
 
+    @Transactional
     public void removeUser(ObjectId userId) {
-        userRepo.deleteById(userId);
-        postsRepo.deleteByUserId(userId);
-        commentRepo.deleteByUserId(userId);
-        reactionRepo.deleteByUserId(userId);
+        try {
+            userRepo.findById(userId)
+                    .orElseThrow(() -> new UserNotFoundException("User not found: " + userId));
+            userRepo.deleteById(userId);
+            postsRepo.deleteByUserId(userId);
+            commentRepo.deleteByUserId(userId);
+            reactionRepo.deleteByUserId(userId);
 
-
+        } catch (Exception e) {
+            log.error("Failed to remove userId={}", userId, e);
+            throw e;
+        }
     }
 
     public Users newUserUpdate(ObjectId id, UserDto usersDto) {
 
-        Users user = userRepo.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
+        try {
+            Users user = userRepo.findById(id)
+                    .orElseThrow(() -> new UserNotFoundException("User is not found"));
 
-        if (usersDto.getUserEmail() != null && !usersDto.getUserEmail().isEmpty()) {
-            user.setUserEmail(usersDto.getUserEmail());
+            if (usersDto.getUserEmail() != null && !usersDto.getUserEmail().isEmpty()) {
+                user.setUserEmail(usersDto.getUserEmail());
+            }
+
+            if (usersDto.getPassword() != null && !usersDto.getPassword().isEmpty()) {
+                user.setPassword(usersDto.getPassword());
+            }
+
+            return userRepo.save(user);
+
+        } catch (Exception e) {
+            log.error("Unexpected error while updating user id={}", id, e);
+            throw e;
         }
-
-        if (usersDto.getPassword() != null && !usersDto.getPassword().isEmpty()) {
-            user.setPassword(usersDto.getPassword());
-        }
-
-        return userRepo.save(user);
     }
 }
