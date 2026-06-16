@@ -1,5 +1,6 @@
 package com.example.demo.sentiment_analysis.comment.model;
 
+
 import com.example.demo.sentiment_analysis.ai.enumeration.SentimentType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

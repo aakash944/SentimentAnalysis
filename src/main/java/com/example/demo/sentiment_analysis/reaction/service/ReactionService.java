@@ -108,9 +108,7 @@ public class ReactionService {
 
             if (r.getReactionType().equals(dto.getReactionType())) {
                 reactionRepo.delete(r);
-
                 redisService.decrement(reactionCountKey(post.getId()));
-
                 postRealtimePublisher.publishPostUpdate(
                         post.getId(),
                         "REACTION_DELETED",
@@ -136,7 +134,6 @@ public class ReactionService {
         reactionRepo.save(reaction);
 
         redisService.increment(reactionCountKey(post.getId()));
-
         postRealtimePublisher.publishPostUpdate(
                 post.getId(),
                 "REACTION_CREATED",
@@ -145,7 +142,6 @@ public class ReactionService {
     }
 
     private String reactionCountKey(ObjectId postId) {
-
         return "reaction:count:" + postId.toHexString();
     }
     public long getReactionCount(ObjectId postId) {

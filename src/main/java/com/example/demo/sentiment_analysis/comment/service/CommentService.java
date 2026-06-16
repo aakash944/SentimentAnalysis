@@ -1,6 +1,8 @@
 package com.example.demo.sentiment_analysis.comment.service;
 
+
 import com.example.demo.sentiment_analysis.comment.comment_request.CommentRequest;
+import com.example.demo.sentiment_analysis.exception.GibberishCommentException;
 import com.example.demo.sentiment_analysis.posts.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.CommentNotFoundException;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
@@ -19,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,13 +38,15 @@ public class CommentService {
     private final PostsRepo postsRepo;
     private final PostRealtimePublisher postRealtimePublisher;
     private final RedisService redisService;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public CommentService(CommentRepo commentRepo, UserRepo userRepo, PostsRepo postsRepo, PostRealtimePublisher postRealtimePublisher, RedisService redisService) {
+    public CommentService(CommentRepo commentRepo, UserRepo userRepo, PostsRepo postsRepo, PostRealtimePublisher postRealtimePublisher, RedisService redisService, KafkaTemplate<String, String> kafkaTemplate) {
         this.commentRepo = commentRepo;
         this.userRepo = userRepo;
         this.postsRepo = postsRepo;
         this.postRealtimePublisher = postRealtimePublisher;
         this.redisService = redisService;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     public PaginatedResponse<CommentResponseDto> getCommentByEmail(String userEmail, Pageable pageable) {
@@ -88,7 +93,7 @@ public class CommentService {
         return response;
     }
 
-    @Transactional
+//    @Transactional
     public CommentResponseDto newComment(CommentRequest commentDto, String userEmail) throws AccessDeniedException {
         try {
             Users currentUser = userRepo.findByUserEmail(userEmail);
@@ -105,6 +110,12 @@ public class CommentService {
                 throw new AccessDeniedException("You cannot comment on this post");
             }
 
+            // Validate comment text
+            String text = commentDto.getText().trim();
+            if (text.isEmpty() || text.length() < 3) {
+                throw new GibberishCommentException("Comment too short");
+            }
+
             Comment comment = new Comment();
             comment.setUserId(currentUser.getId());
             comment.setPostId(post.getId());
@@ -112,10 +123,16 @@ public class CommentService {
             comment.setUpdatedAt(LocalDateTime.now());
 
             Comment savedComment = commentRepo.save(comment);
+            log.info("SAVING COMMENT ID: {}", savedComment.getId());
+            kafkaTemplate.send("comments-topic", savedComment.getId().toHexString(), savedComment.getId().toHexString() + "::"
+                    + savedComment.getText());
+
+
             String countKey = "comment:count:" + post.getId().toHexString();
             redisService.increment(countKey);
             postRealtimePublisher.publishPostUpdate(post.getId(),
                     "COMMENT_CREATED", userEmail);
+
             return new CommentResponseDto(
                     savedComment.getPostId().toHexString(),
                     currentUser.getUserEmail(),
@@ -124,9 +141,10 @@ public class CommentService {
                     savedComment.getConfidence(),
                     savedComment.getUpdatedAt()
             );
+
         } catch (Exception e) {
             log.error("Not created comment from {} ", userEmail, e);
-            throw e;
+                throw e;
         }
     }
 
@@ -204,22 +222,15 @@ public class CommentService {
     }
 
     public long getCommentCount(ObjectId postId) {
-
         String key = commentCountKey(postId);
-
         Long cached = redisService.getLong(key);
-
         if (cached != null) {
-
             log.info("CACHE HIT");
-
             return cached;
         }
         log.info("CACHE MISS");
         long dbCount = commentRepo.countByPostId(postId);
-
         redisService.setLong(key, dbCount, null);
-
         return dbCount;
     }
 }

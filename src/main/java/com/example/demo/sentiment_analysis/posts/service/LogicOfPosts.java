@@ -45,7 +45,6 @@ public class LogicOfPosts {
     }
 
     public PaginatedResponse<PostResponseDto> getPostsByUserEmail(String userEmail, Pageable pageable) {
-
         String cacheKey = feedCacheKey(userEmail, pageable);
         PaginatedResponse<PostResponseDto> cachedResponse = redisService.get(cacheKey,
                         new TypeReference<PaginatedResponse<PostResponseDto>>() {
@@ -70,7 +69,6 @@ public class LogicOfPosts {
         List<PostResponseDto> content = slice.getContent().stream()
                 .map(post -> {
                     Users postOwner = userRepo.findById(post.getUserId()).orElse(null);
-
                     return new PostResponseDto(
                             post.getId().toHexString(),
                             post.getTitle(),

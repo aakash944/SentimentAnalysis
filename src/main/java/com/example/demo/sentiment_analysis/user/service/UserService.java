@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,7 +67,7 @@ public class UserService {
     @Transactional
     public Users newUserCreate(UserDto userInfo) {
 
-//        validatePassword(userInfo.getPassword());
+       validatePassword(userInfo.getPassword());
         Users users = new Users();
         users.setRoles(List.of("USER"));
         users.setPassword(encoder.encode(userInfo.getPassword()));
@@ -115,10 +116,15 @@ public class UserService {
     }
 
     @Transactional
-    public void removeUser(ObjectId userId) {
+    public void removeUser(ObjectId userId, String currentEmail) {
         try {
-            userRepo.findById(userId)
+            Users user = userRepo.findById(userId)
                     .orElseThrow(() -> new UserNotFoundException("User not found: " + userId));
+            if (!user.getUserEmail()
+                    .equals(currentEmail)
+            ) {
+                throw new AccessDeniedException("Cannot delete other account");
+            }
             userRepo.deleteById(userId);
             postsRepo.deleteByUserId(userId);
             commentRepo.deleteByUserId(userId);
@@ -130,12 +136,14 @@ public class UserService {
         }
     }
 
-    public Users newUserUpdate(ObjectId id, UserDto usersDto) {
+    public Users newUserUpdate(ObjectId id, UserDto usersDto, String currentEmail) {
 
         try {
             Users user = userRepo.findById(id)
                     .orElseThrow(() -> new UserNotFoundException("User is not found"));
-
+            if (!user.getUserEmail().equals(currentEmail)) {
+                throw new AccessDeniedException("Cannot update other account");
+            }
             if (usersDto.getUserEmail() != null && !usersDto.getUserEmail().isEmpty()) {
                 user.setUserEmail(usersDto.getUserEmail());
             }

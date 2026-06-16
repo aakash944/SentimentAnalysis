@@ -4,7 +4,7 @@ package com.example.demo.sentiment_analysis.global_handler_exception;
 import com.example.demo.sentiment_analysis.exception.*;
 import com.example.demo.sentiment_analysis.global_handler_exception.exception_dto.ExceptionResponseDto;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -82,9 +82,33 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
     @ExceptionHandler(SentimentAnalysisException.class)
-    public ResponseEntity<ExceptionResponseDto> handleSentimentError(SentimentAnalysisException ex) {
-        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                .body(new ExceptionResponseDto(ex.getMessage()));
+    public ResponseEntity<ExceptionResponseDto> handleSentimentError(
+            SentimentAnalysisException ex,
+            HttpServletRequest request
+    ) {
+        ExceptionResponseDto error = new ExceptionResponseDto(
+                HttpStatus.SERVICE_UNAVAILABLE.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                request.getRequestURI()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(error);
+    }
+    @ExceptionHandler(GibberishCommentException.class)
+    public ResponseEntity<ExceptionResponseDto> handleGibberishComment(
+            GibberishCommentException ex,
+            HttpServletRequest request
+    ) {
+        ExceptionResponseDto error = new ExceptionResponseDto(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage(),
+                LocalDateTime.now(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 //    @ExceptionHandler(Exception.class)
 //    public ResponseEntity<ErrorResponseDto> handleAnyOther(

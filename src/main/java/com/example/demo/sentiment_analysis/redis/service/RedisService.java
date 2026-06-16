@@ -19,19 +19,13 @@ public class RedisService {
         this.redisTemplate = redisTemplate;
         this.objectMapper = objectMapper;
     }
-
     public <T> T get(String key, TypeReference<T> typeReference) {
-
         try {
             String value = redisTemplate.opsForValue().get(key);
-
             if (value == null) {
                 return null;
             }
-            return objectMapper.readValue(
-                    value,
-                    typeReference
-            );
+            return objectMapper.readValue(value, typeReference);
         } catch (Exception e) {
             log.error("Redis get failed for key={}", key, e);
             return null;
@@ -48,25 +42,6 @@ public class RedisService {
             }
         } catch (Exception e) {
             log.error("Redis set failed for key={}", key, e);
-        }
-    }
-
-    public void setLong(String key, Long value, Long ttlSeconds) {
-        try {
-
-            if (ttlSeconds == null) {
-
-                redisTemplate.opsForValue()
-                        .set(key, String.valueOf(value));
-
-            } else {
-
-                redisTemplate.opsForValue()
-                        .set(key, String.valueOf(value), ttlSeconds, TimeUnit.SECONDS);
-            }
-
-        } catch (Exception e) {
-            log.error("Redis setLong failed for key={}", key, e);
         }
     }
 
@@ -98,6 +73,19 @@ public class RedisService {
         } catch (Exception e) {
             log.error("Redis getLong failed for key={}", key, e);
             return null;
+        }
+    }
+    public void setLong(String key, Long value, Long ttlSeconds) {
+        try {
+            if (ttlSeconds == null) {
+                redisTemplate.opsForValue()
+                        .set(key, String.valueOf(value));
+            } else {
+                redisTemplate.opsForValue()
+                        .set(key, String.valueOf(value), ttlSeconds, TimeUnit.SECONDS);
+            }
+        } catch (Exception e) {
+            log.error("Redis setLong failed for key={}", key, e);
         }
     }
 }

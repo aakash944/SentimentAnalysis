@@ -9,6 +9,9 @@ import org.bson.types.ObjectId;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,15 +25,18 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable ObjectId id) {
-        userService.removeUser(id);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User principal = (User) authentication.getPrincipal();
+        userService.removeUser(id, principal.getUsername());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Users> updateUser(@PathVariable ObjectId id,
                                             @RequestBody UserDto userInfo) {
-
-        Users updatedUser = userService.newUserUpdate(id, userInfo);
-        return ResponseEntity.ok(updatedUser);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User principal = (User) authentication.getPrincipal();
+        Users updated = userService.newUserUpdate(id, userInfo, principal.getUsername());
+        return ResponseEntity.ok(updated);
     }
 }
