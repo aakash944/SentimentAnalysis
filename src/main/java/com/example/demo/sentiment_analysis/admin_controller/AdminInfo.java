@@ -16,6 +16,7 @@ import org.springframework.data.domain.Pageable;
 @RequestMapping("/Admin_userInfo")
 
 public class AdminInfo {
+
     private final UserService userService;
 
     public AdminInfo(UserService userService) {
