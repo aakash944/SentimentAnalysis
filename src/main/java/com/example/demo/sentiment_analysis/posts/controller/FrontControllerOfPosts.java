@@ -7,6 +7,7 @@ import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.posts.posts_response.PostDetailDto;
 import com.example.demo.sentiment_analysis.posts.posts_response.PostResponseDto;
 import com.example.demo.sentiment_analysis.posts.service.LogicOfPosts;
+import jakarta.validation.Valid;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -42,7 +43,7 @@ public class FrontControllerOfPosts {
     }
 
     @PostMapping
-    public ResponseEntity<Posts> createPost(@RequestBody PostDto postDto) {
+    public ResponseEntity<Posts> createPost(@Valid @RequestBody PostDto postDto) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         org.springframework.security.core.userdetails.User principal =
                 (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
@@ -61,7 +62,7 @@ public class FrontControllerOfPosts {
 
     @PutMapping("/{id}")
     public ResponseEntity<Posts> updatePost(@PathVariable ObjectId id,
-                                            @RequestBody PostDto postDto) {
+                                            @Valid @RequestBody PostDto postDto) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         org.springframework.security.core.userdetails.User principal =
                 (org.springframework.security.core.userdetails.User) authentication.getPrincipal();

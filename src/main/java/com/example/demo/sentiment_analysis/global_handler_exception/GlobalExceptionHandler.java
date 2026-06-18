@@ -81,6 +81,7 @@ public class GlobalExceptionHandler {
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
+
     @ExceptionHandler(SentimentAnalysisException.class)
     public ResponseEntity<ExceptionResponseDto> handleSentimentError(
             SentimentAnalysisException ex,
@@ -97,6 +98,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.SERVICE_UNAVAILABLE)
                 .body(error);
     }
+
     @ExceptionHandler(GibberishCommentException.class)
     public ResponseEntity<ExceptionResponseDto> handleGibberishComment(
             GibberishCommentException ex,
@@ -110,17 +112,17 @@ public class GlobalExceptionHandler {
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<ErrorResponseDto> handleAnyOther(
-//            Exception ex,
-//            HttpServletRequest request
-//    ) {
-//        ErrorResponseDto error = new ErrorResponseDto(
-//                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-//                "Something went wrong",
-//                LocalDateTime.now(),
-//                request.getRequestURI()
-//        );
-//        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
-//    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ExceptionResponseDto> handleAnyOther(
+            Exception ex,
+            HttpServletRequest request) {
+        ExceptionResponseDto error = new ExceptionResponseDto(
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                "Something went wrong",
+                LocalDateTime.now(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    }
 }

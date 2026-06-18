@@ -5,6 +5,7 @@ import com.example.demo.sentiment_analysis.reaction.dto.ReactionDto;
 import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
 import com.example.demo.sentiment_analysis.reaction.reaction_response.ReactionResponseDto;
 import com.example.demo.sentiment_analysis.reaction.service.ReactionService;
+import jakarta.validation.Valid;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class ReactionController {
     private final ReactionService reactionService;
 
     public ReactionController(ReactionService reactionService) {
+
         this.reactionService = reactionService;
     }
 
@@ -49,7 +51,7 @@ public class ReactionController {
 
 
     @PostMapping
-    public void reactEmoji(@RequestBody ReactionDto reactionDto) throws AccessDeniedException {
+    public void reactEmoji(@Valid @RequestBody ReactionDto reactionDto) throws AccessDeniedException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         org.springframework.security.core.userdetails.User principal =
                 (org.springframework.security.core.userdetails.User) authentication.getPrincipal();

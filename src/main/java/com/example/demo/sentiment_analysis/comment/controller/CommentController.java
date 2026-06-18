@@ -6,6 +6,7 @@ import com.example.demo.sentiment_analysis.comment.model.Comment;
 import com.example.demo.sentiment_analysis.comment.service.CommentService;
 import com.example.demo.sentiment_analysis.comment.comment_response.CommentResponseDto;
 import com.example.demo.sentiment_analysis.slice_response_dto.PaginatedResponse;
+import jakarta.validation.Valid;
 import org.bson.types.ObjectId;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ public class CommentController {
     private final CommentService commentService;
 
     public CommentController(CommentService commentService) {
+
         this.commentService = commentService;
     }
     @GetMapping
@@ -39,7 +41,7 @@ public class CommentController {
     }
 
     @PostMapping
-    public ResponseEntity<CommentResponseDto> createComment(@RequestBody CommentRequest commentDto) throws AccessDeniedException {
+    public ResponseEntity<CommentResponseDto> createComment(@Valid @RequestBody CommentRequest commentDto) throws AccessDeniedException {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
@@ -58,7 +60,7 @@ public class CommentController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Comment> updateComment(@PathVariable ObjectId id,
-                                                 @RequestBody CommentRequest commentDto) throws AccessDeniedException {
+                                                 @Valid @RequestBody CommentRequest commentDto) throws AccessDeniedException {
         Authentication authentication =
                 SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();

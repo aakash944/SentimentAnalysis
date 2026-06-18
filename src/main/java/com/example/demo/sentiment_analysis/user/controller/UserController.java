@@ -5,6 +5,7 @@ import com.example.demo.sentiment_analysis.user.dto.UserDto;
 import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.user.service.UserService;
 
+import jakarta.validation.Valid;
 import org.bson.types.ObjectId;
 
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Users> updateUser(@PathVariable ObjectId id,
-                                            @RequestBody UserDto userInfo) {
+                                           @Valid @RequestBody UserDto userInfo) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
         Users updated = userService.newUserUpdate(id, userInfo, principal.getUsername());
