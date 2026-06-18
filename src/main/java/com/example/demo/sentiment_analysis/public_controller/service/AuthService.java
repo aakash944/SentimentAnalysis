@@ -1,5 +1,6 @@
 package com.example.demo.sentiment_analysis.public_controller.service;
 
+import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.jwt.request.RefreshRequest;
 import com.example.demo.sentiment_analysis.jwt.response.AuthResponse;
 import com.example.demo.sentiment_analysis.public_controller.login.LoginRequest;
@@ -11,7 +12,6 @@ import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.user.repository.UserRepo;
 import org.bson.types.ObjectId;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +34,7 @@ public class AuthService {
         Users user = userRepo.findByUserEmail(request.getUserEmail());
 
         if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+            throw new UserNotFoundException("User not found");
         }
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {

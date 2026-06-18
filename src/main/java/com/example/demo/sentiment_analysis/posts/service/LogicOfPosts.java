@@ -157,7 +157,7 @@ public class LogicOfPosts {
 
         Users currentUser = userRepo.findByUserEmail(userEmail);
         if (currentUser == null) {
-            throw new UsernameNotFoundException("User not found");
+            throw new UserNotFoundException("User not found");
         }
 
         Posts post = postsRepo.findById(postId)

@@ -100,11 +100,6 @@ public class UserService {
         }
 
 
-        if (password.matches(".*(.)\\1{4,}.*")) {
-            throw new WeakPasswordException("No character can repeat more than 4 times consecutively");
-        }
-
-
         if (password.matches(".*(\\d)\\1{4,}.*")) {
             throw new WeakPasswordException("No number can repeat more than 4 times consecutively");
         }
@@ -113,6 +108,11 @@ public class UserService {
         if (password.matches(".*([@$!%*?&])\\1{4,}.*")) {
             throw new WeakPasswordException("No special character can repeat more than 4 times consecutively");
         }
+
+
+        if (password.matches(".*(.)\\1{4,}.*")) {
+            throw new WeakPasswordException("No character can repeat more than 4 times consecutively");
+        }
     }
 
     @Transactional
@@ -120,9 +120,7 @@ public class UserService {
         try {
             Users user = userRepo.findById(userId)
                     .orElseThrow(() -> new UserNotFoundException("User not found: " + userId));
-            if (!user.getUserEmail()
-                    .equals(currentEmail)
-            ) {
+            if (!user.getUserEmail().equals(currentEmail)) {
                 throw new AccessDeniedException("Cannot delete other account");
             }
             userRepo.deleteById(userId);
