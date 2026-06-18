@@ -1,5 +1,7 @@
 package com.example.demo.sentiment_analysis.jwt.utili;
 
+import com.example.demo.sentiment_analysis.jwt.repository.RefreshTokenRepo;
+import com.example.demo.sentiment_analysis.jwt.request.LogoutRequest;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -16,7 +18,7 @@ import java.util.Map;
 @Slf4j
 @Service
 public class JwtUtil {
-
+    private final RefreshTokenRepo refreshTokenRepo;
     @Value("${jwt.secret}")
     private String secretKey;
     @Value("${jwt.access-expiration-ms}")
@@ -24,6 +26,10 @@ public class JwtUtil {
 
     @Value("${jwt.refresh-expiration-ms}")
     private long refreshExpirationMs;
+
+    public JwtUtil(RefreshTokenRepo refreshTokenRepo) {
+        this.refreshTokenRepo = refreshTokenRepo;
+    }
 
     public String generateToken(String username) {
         Map<String, Object> claims = new HashMap<>();
@@ -93,5 +99,17 @@ public class JwtUtil {
     public String extractTokenType(String token) {
         Claims claims = extractAllClaims(token);
         return claims.get("type", String.class);
+    }
+
+    public void logout(LogoutRequest request) {
+        String refreshToken = request.getRefreshToken();
+
+        if (refreshToken != null && !refreshToken.isBlank()) {
+            refreshTokenRepo.deleteByRefreshToken(refreshToken);
+        }
+    }
+
+    public void logoutAllDevices(String userEmail) {
+        refreshTokenRepo.deleteByUserEmail(userEmail);
     }
 }

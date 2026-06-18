@@ -67,15 +67,12 @@ public class JwtFilter extends OncePerRequestFilter {
 
                 // ONLY ACCESS TOKEN ALLOWED
                 if (!"access".equals(tokenType)) {
-
                     filterChain.doFilter(request, response);
-
                     return;
                 }
 
                 UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(
-                                userDetails,
+                        new UsernamePasswordAuthenticationToken(userDetails,
                                 null,
                                 userDetails.getAuthorities()
                         );

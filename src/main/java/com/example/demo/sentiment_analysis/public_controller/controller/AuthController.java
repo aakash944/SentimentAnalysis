@@ -4,7 +4,6 @@ import com.example.demo.sentiment_analysis.jwt.request.RefreshRequest;
 import com.example.demo.sentiment_analysis.jwt.request.LogoutRequest;
 import com.example.demo.sentiment_analysis.user.dto.UserDto;
 import com.example.demo.sentiment_analysis.exception.RefreshTokenException;
-import com.example.demo.sentiment_analysis.public_controller.service.AuthService;
 import com.example.demo.sentiment_analysis.jwt.model.RefreshToken;
 import com.example.demo.sentiment_analysis.jwt.repository.RefreshTokenRepo;
 import com.example.demo.sentiment_analysis.security.UserDetailsServiceImpl;
@@ -37,16 +36,14 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserDetailsServiceImpl userDetailsService;
     private final JwtUtil jwtUtil;
-    private final AuthService authService;
     private final UserRepo userRepo;
     private final RefreshTokenRepo refreshTokenRepo;
 
-    public AuthController(UserService userService, AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil, AuthService authService, UserRepo userRepo, RefreshTokenRepo refreshTokenRepo) {
+    public AuthController(UserService userService, AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil, UserRepo userRepo, RefreshTokenRepo refreshTokenRepo) {
         this.userService = userService;
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
-        this.authService = authService;
         this.userRepo = userRepo;
         this.refreshTokenRepo = refreshTokenRepo;
     }
@@ -109,7 +106,7 @@ public class AuthController {
                 .orElseThrow(() -> new RefreshTokenException("Refresh token not found"));
 
         if (!jwtUtil.validateToken(refreshToken)) {
-            throw new RefreshTokenException("Refresh token expired");
+            throw new RefreshTokenException("Invalid or expired refresh token");
         }
         String username = jwtUtil.extractUserName(refreshToken);
         String newAccessToken = jwtUtil.generateToken(username);
@@ -118,13 +115,13 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<Map<String, String>> logout(@Valid @RequestBody LogoutRequest request) {
-        authService.logout(request);
+        jwtUtil.logout(request);
         return ResponseEntity.ok(Map.of("message", "Logged out successfully"));
     }
 
     @PostMapping("/logout-all")
     public ResponseEntity<Map<String, String>> logoutAllDevices(@RequestParam String userEmail) {
-        authService.logoutAllDevices(userEmail);
+        jwtUtil.logoutAllDevices(userEmail);
         return ResponseEntity.ok(Map.of("message", "Logged out from all devices"));
     }
 }
