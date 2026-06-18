@@ -32,7 +32,6 @@ public class AuthService {
 
     public AuthResponse login(LoginRequest request) {
         Users user = userRepo.findByUserEmail(request.getUserEmail());
-
         if (user == null) {
             throw new UserNotFoundException("User not found");
         }

@@ -26,9 +26,9 @@ public class JwtUtil {
     private long refreshExpirationMs;
 
     public String generateToken(String username) {
-
         Map<String, Object> claims = new HashMap<>();
         claims.put("type", "access");
+
         return Jwts.builder()
                 .claims()
                 .add(claims)
@@ -41,7 +41,6 @@ public class JwtUtil {
     }
 
     public String generateRefreshToken(String username) {
-
         Map<String, Object> claims = new HashMap<>();
         claims.put("type", "refresh");
         return Jwts.builder()
@@ -76,7 +75,6 @@ public class JwtUtil {
                 .parseSignedClaims(token)
                 .getPayload();
     }
-
     public boolean validateToken(String token) {
         try {
             return !isTokenExpired(token);
@@ -85,7 +83,6 @@ public class JwtUtil {
             return false;
         }
     }
-
     private Boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
