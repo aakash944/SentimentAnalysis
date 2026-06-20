@@ -1,5 +1,6 @@
 package com.example.demo.sentiment_analysis.reaction.service;
 
+import com.example.demo.sentiment_analysis.exception.UserNotFoundException;
 import com.example.demo.sentiment_analysis.reaction.dto.ReactionDto;
 import com.example.demo.sentiment_analysis.posts.enumeration.TypeOfAccess;
 import com.example.demo.sentiment_analysis.exception.PostsNotFoundException;
@@ -45,7 +46,7 @@ public class ReactionService {
         Users user = userRepo.findByUserEmail(userEmail);
 
         if (user == null) {
-            throw new UsernameNotFoundException("User not found");
+            throw new UserNotFoundException("User not found");
         }
 
         List<Posts> allPosts = postsRepo.findAll();

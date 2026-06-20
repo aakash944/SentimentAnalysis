@@ -4,7 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d426d06a-2bb2-42b3-8202-53559887c8c0" name="Changes" comment="" />
+    <list default="true" id="d426d06a-2bb2-42b3-8202-53559887c8c0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/css/coverage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/css/idea.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/img/arrowDown.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/img/arrowUp.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/js/highlight.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/js/highlightjs-line-numbers.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_BLOCK.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_CLASS.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_LINE.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_METHOD.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/sources/source-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_request/CommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/post_request_dto/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/post_request_dto/PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/dto/ReactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/dto/ReactionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/service/ReactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/service/ReactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security/config/SpringSecurity.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,30 +95,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.DemoApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.LogicOfPostsTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.LogicOfPostsTest.getPostsByUserEmailReturnsCachedResponseWhenPresent.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.PostRealtimePublisherTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RedisServiceTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.SpringSecurityTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.UserDetailsServiceImplTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;I do mind&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ACER/Downloads/Analysis_with_websocket&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.DemoApplication.executor": "Run",
+    "JUnit.AdminInfoTest.executor": "Run",
+    "JUnit.AdminInfoTest.getAllUser_paginationMetadata.executor": "Coverage",
+    "JUnit.AuthControllerTest.executor": "Coverage",
+    "JUnit.CommentControllerTest.executor": "Coverage",
+    "JUnit.CommentControllerTest.getAllComments_returns200.executor": "Run",
+    "JUnit.CommentControllerTest.updateComment_usesAuthenticatedEmail.executor": "Run",
+    "JUnit.CommentServiceTest.executor": "Coverage",
+    "JUnit.DemoApplicationTests.executor": "Coverage",
+    "JUnit.FrontControllerOfPostsTest.executor": "Coverage",
+    "JUnit.GlobalExceptionHandlerTest.executor": "Coverage",
+    "JUnit.HealthCheckerTest.executor": "Coverage",
+    "JUnit.JwtFilterTest.executor": "Coverage",
+    "JUnit.JwtUtilTest.executor": "Coverage",
+    "JUnit.LogicOfPostsTest.executor": "Coverage",
+    "JUnit.LogicOfPostsTest.getPostsByUserEmailReturnsCachedResponseWhenPresent.executor": "Run",
+    "JUnit.PostRealtimePublisherTest.executor": "Run",
+    "JUnit.ReactionControllerTest.executor": "Coverage",
+    "JUnit.ReactionServiceTest.executor": "Coverage",
+    "JUnit.RedisServiceTest.executor": "Coverage",
+    "JUnit.SentimentAiServiceTest.executor": "Coverage",
+    "JUnit.SentimentConsumerTest.executor": "Coverage",
+    "JUnit.SpringSecurityTest.executor": "Coverage",
+    "JUnit.UserControllerTest.executor": "Coverage",
+    "JUnit.UserDetailsServiceImplTest.executor": "Coverage",
+    "JUnit.UserServiceTest.executor": "Coverage",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "I do mind",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ACER/Downloads/Analysis_with_websocket",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.DemoApplication">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.DemoApplication" />
@@ -97,61 +151,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PostRealtimePublisherTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.sentiment_analysis.realtime_websocket.service.*" />
+          <option name="PATTERN" value="com.example.demo.sentiment_analysis.public_controller.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.sentiment_analysis.realtime_websocket.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.realtime_websocket.service.PostRealtimePublisherTest" />
+      <option name="PACKAGE_NAME" value="com.example.demo.sentiment_analysis.public_controller.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.public_controller.controller.AuthControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RedisServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FrontControllerOfPostsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.sentiment_analysis.redis.service.*" />
+          <option name="PATTERN" value="com.example.demo.sentiment_analysis.posts.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.sentiment_analysis.redis.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.redis.service.RedisServiceTest" />
+      <option name="PACKAGE_NAME" value="com.example.demo.sentiment_analysis.posts.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.posts.controller.FrontControllerOfPostsTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SpringSecurityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ReactionControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.sentiment_analysis.security.config.*" />
+          <option name="PATTERN" value="com.example.demo.sentiment_analysis.reaction.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.sentiment_analysis.security.config" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.security.config.SpringSecurityTest" />
+      <option name="PACKAGE_NAME" value="com.example.demo.sentiment_analysis.reaction.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.reaction.controller.ReactionControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDetailsServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.sentiment_analysis.security.*" />
+          <option name="PATTERN" value="com.example.demo.sentiment_analysis.user.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.demo.sentiment_analysis.security" />
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.security.UserDetailsServiceImplTest" />
+      <option name="PACKAGE_NAME" value="com.example.demo.sentiment_analysis.user.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.user.controller.UserControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -160,10 +214,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.DemoApplication" />
-        <item itemvalue="JUnit.RedisServiceTest" />
-        <item itemvalue="JUnit.PostRealtimePublisherTest" />
-        <item itemvalue="JUnit.UserDetailsServiceImplTest" />
-        <item itemvalue="JUnit.SpringSecurityTest" />
+        <item itemvalue="JUnit.UserControllerTest" />
+        <item itemvalue="JUnit.ReactionControllerTest" />
+        <item itemvalue="JUnit.AuthControllerTest" />
+        <item itemvalue="JUnit.FrontControllerOfPostsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -177,9 +231,44 @@
     </task>
     <servers />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/public_controller/controller/AuthController.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1781869389491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.user.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$AdminInfoTest_getAllUser_paginationMetadata.ic" NAME="AdminInfoTest.getAllUser_paginationMetadata Coverage Results" MODIFIED="1781865074669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.admin_controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$SentimentConsumerTest.ic" NAME="SentimentConsumerTest Coverage Results" MODIFIED="1781834866253" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.ai.kafka.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$LogicOfPostsTest.ic" NAME="LogicOfPostsTest Coverage Results" MODIFIED="1781705190079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.posts.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$JwtFilterTest.ic" NAME="JwtFilterTest Coverage Results" MODIFIED="1781834992582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.jwt.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$CommentControllerTest.ic" NAME="CommentControllerTest Coverage Results" MODIFIED="1781867980352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.comment.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$AdminInfoTest.ic" NAME="AdminInfoTest Coverage Results" MODIFIED="1781865870459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.admin_controller.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Analysis_with_websocket$SpringSecurityTest.ic" NAME="SpringSecurityTest Coverage Results" MODIFIED="1781750635089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.example.demo.sentiment_analysis.security.config.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$DemoApplicationTests.ic" NAME="DemoApplicationTests Coverage Results" MODIFIED="1781834794849" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Analysis_with_websocket$UserDetailsServiceImplTest.ic" NAME="UserDetailsServiceImplTest Coverage Results" MODIFIED="1781750700378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.example.demo.sentiment_analysis.security.*</FILTER>
@@ -187,14 +276,38 @@
     <SUITE FILE_PATH="coverage/Analysis_with_websocket$RedisServiceTest.ic" NAME="RedisServiceTest Coverage Results" MODIFIED="1781752047306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.example.demo.sentiment_analysis.redis.service.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$FrontControllerOfPostsTest.ic" NAME="FrontControllerOfPostsTest Coverage Results" MODIFIED="1781868846255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.posts.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$CommentServiceTest.ic" NAME="CommentServiceTest Coverage Results" MODIFIED="1781834927861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.comment.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$SentimentAiServiceTest.ic" NAME="SentimentAiServiceTest Coverage Results" MODIFIED="1781834904155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.ai.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$JwtUtilTest.ic" NAME="JwtUtilTest Coverage Results" MODIFIED="1781835005567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.jwt.utili.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Analysis_with_websocket$UserServiceTest.ic" NAME="UserServiceTest Coverage Results" MODIFIED="1781749840497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.example.demo.sentiment_analysis.user.service.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Analysis_with_websocket$PostRealtimePublisherTest.ic" NAME="PostRealtimePublisherTest Coverage Results" MODIFIED="1781751670907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>com.example.demo.sentiment_analysis.realtime_websocket.service.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Analysis_with_websocket$LogicOfPostsTest.ic" NAME="LogicOfPostsTest Coverage Results" MODIFIED="1781705190079" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>com.example.demo.sentiment_analysis.posts.service.*</FILTER>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$ReactionControllerTest.ic" NAME="ReactionControllerTest Coverage Results" MODIFIED="1781869350209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.reaction.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$ReactionServiceTest.ic" NAME="ReactionServiceTest Coverage Results" MODIFIED="1781834470637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.reaction.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$AuthControllerTest.ic" NAME="AuthControllerTest Coverage Results" MODIFIED="1781868959351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.public_controller.controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$GlobalExceptionHandlerTest.ic" NAME="GlobalExceptionHandlerTest Coverage Results" MODIFIED="1781834948615" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.global_handler_exception.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Analysis_with_websocket$HealthCheckerTest.ic" NAME="HealthCheckerTest Coverage Results" MODIFIED="1781867098625" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.example.demo.sentiment_analysis.checker.*</FILTER>
     </SUITE>
   </component>
 </project>
