@@ -1,11 +1,11 @@
 package com.example.demo.sentiment_analysis.user.controller;
 
 
+import com.example.demo.sentiment_analysis.user.user_response.CurrentUserResponse;
 import com.example.demo.sentiment_analysis.user.dto.UserDto;
 import com.example.demo.sentiment_analysis.user.model.Users;
 import com.example.demo.sentiment_analysis.user.service.UserService;
 
-import jakarta.validation.Valid;
 import org.bson.types.ObjectId;
 
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,18 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
+    @GetMapping("/me")
+    public ResponseEntity<CurrentUserResponse> getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User principal = (User) authentication.getPrincipal();
+        Users user = userService.getCurrentUser(principal.getUsername());
+        CurrentUserResponse response = new CurrentUserResponse(
+                user.getId().toHexString(),
+                user.getUserEmail(),
+                user.getRoles()
+        );
+        return ResponseEntity.ok(response);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable ObjectId id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -34,7 +45,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Users> updateUser(@PathVariable ObjectId id,
-                                           @Valid @RequestBody UserDto userInfo) {
+                                            @RequestBody UserDto userInfo) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User principal = (User) authentication.getPrincipal();
         Users updated = userService.newUserUpdate(id, userInfo, principal.getUsername());

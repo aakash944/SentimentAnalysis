@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentResponseDetailDto {
+    String id;
     private String text;
     private String userEmail;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

@@ -192,6 +192,7 @@ public class LogicOfPosts {
                     Users commentUser = userRepo.findById(comment.getUserId()).orElse(null);
 
                     return new CommentResponseDetailDto(
+                            comment.getId().toHexString(),
                             comment.getText(),
                             commentUser != null ? commentUser.getUserEmail() : "unknown",
                             comment.getUpdatedAt()

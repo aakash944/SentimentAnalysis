@@ -157,4 +157,12 @@ public class UserService {
             throw e;
         }
     }
+
+    public Users getCurrentUser(String currentEmail) {
+        Users user = userRepo.findByUserEmail(currentEmail);
+        if (user == null) {
+            throw new UserNotFoundException("User is not found");
+        }
+        return user;
+    }
 }
