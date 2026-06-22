@@ -1,8 +1,8 @@
 package com.example.demo.sentiment_analysis.posts.post_request_dto;
 
+
 import com.example.demo.sentiment_analysis.posts.enumeration.TypeOfAccess;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +19,6 @@ public class PostDto {
     @NotBlank
     @Size(max = 200)
     private String content;
-    @NotNull
+    @NotBlank
     private TypeOfAccess typeOfAccess;
 }

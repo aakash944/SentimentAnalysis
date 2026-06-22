@@ -1,7 +1,7 @@
 package com.example.demo.sentiment_analysis.reaction.dto;
 
 import com.example.demo.sentiment_analysis.reaction.enumeration.ReactionType;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +11,8 @@ import org.bson.types.ObjectId;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReactionDto {
-    @NotNull
-    private ObjectId postId;
-    @NotNull
+    @NotBlank
+    private ObjectId postId;   // which post
+    @NotBlank
     private ReactionType reactionType;
 }

@@ -6,40 +6,45 @@
   <component name="ChangeListManager">
     <list default="true" id="d426d06a-2bb2-42b3-8202-53559887c8c0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/css/coverage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/css/idea.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/img/arrowDown.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/img/arrowUp.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_BLOCK.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_CLASS.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_LINE.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_METHOD.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/js/highlight.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/js/highlightjs-line-numbers.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_BLOCK.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_BLOCK_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_CLASS.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_CLASS_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_LINE.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_LINE_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_METHOD.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_METHOD_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/index_SORT_BY_NAME_DESC.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htmlReport/ns-1/sources/source-1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_request/CommentRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/comment_request/CommentRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/repository/CommentRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/repository/CommentRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/comment/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/config_cross/CorsConfig.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/post_request_dto/PostDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/post_request_dto/PostDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/posts_response/PostDetailDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/posts_response/PostDetailDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/posts_response/PostResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/posts_response/PostResponseDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/service/LogicOfPosts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/posts/service/LogicOfPosts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/dto/ReactionDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/dto/ReactionDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/repository/ReactionRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/repository/ReactionRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/service/ReactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/reaction/service/ReactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/dto/PostRealtimeUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/dto/PostRealtimeUpdateDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/service/PostRealtimePublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/realtime_websocket/service/PostRealtimePublisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security/config/SpringSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/security/config/SpringSecurity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/admin_controller/AdminInfoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/ai/kafka/SentimentConsumerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/ai/service/SentimentAiServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/checker/HealthCheckerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/comment/controller/CommentControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/comment/service/CommentServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/config/TestSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/global_handler_exception/GlobalExceptionHandlerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/jwt/JwtFilterTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/jwt/utili/JwtUtilTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/posts/controller/FrontControllerOfPostsTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/posts/service/LogicOfPostsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/posts/service/LogicOfPostsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/public_controller/controller/AuthControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/reaction/controller/ReactionControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/reaction/service/ReactionServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/realtime_websocket/service/PostRealtimePublisherTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/realtime_websocket/service/PostRealtimePublisherTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/redis/service/RedisServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/redis/service/RedisServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/security/UserDetailsServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/security/UserDetailsServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/security/config/SpringSecurityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/security/config/SpringSecurityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/user/controller/UserControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/user/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/sentiment_analysis/user/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,48 +100,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.DemoApplication.executor": "Run",
-    "JUnit.AdminInfoTest.executor": "Run",
-    "JUnit.AdminInfoTest.getAllUser_paginationMetadata.executor": "Coverage",
-    "JUnit.AuthControllerTest.executor": "Coverage",
-    "JUnit.CommentControllerTest.executor": "Coverage",
-    "JUnit.CommentControllerTest.getAllComments_returns200.executor": "Run",
-    "JUnit.CommentControllerTest.updateComment_usesAuthenticatedEmail.executor": "Run",
-    "JUnit.CommentServiceTest.executor": "Coverage",
-    "JUnit.DemoApplicationTests.executor": "Coverage",
-    "JUnit.FrontControllerOfPostsTest.executor": "Coverage",
-    "JUnit.GlobalExceptionHandlerTest.executor": "Coverage",
-    "JUnit.HealthCheckerTest.executor": "Coverage",
-    "JUnit.JwtFilterTest.executor": "Coverage",
-    "JUnit.JwtUtilTest.executor": "Coverage",
-    "JUnit.LogicOfPostsTest.executor": "Coverage",
-    "JUnit.LogicOfPostsTest.getPostsByUserEmailReturnsCachedResponseWhenPresent.executor": "Run",
-    "JUnit.PostRealtimePublisherTest.executor": "Run",
-    "JUnit.ReactionControllerTest.executor": "Coverage",
-    "JUnit.ReactionServiceTest.executor": "Coverage",
-    "JUnit.RedisServiceTest.executor": "Coverage",
-    "JUnit.SentimentAiServiceTest.executor": "Coverage",
-    "JUnit.SentimentConsumerTest.executor": "Coverage",
-    "JUnit.SpringSecurityTest.executor": "Coverage",
-    "JUnit.UserControllerTest.executor": "Coverage",
-    "JUnit.UserDetailsServiceImplTest.executor": "Coverage",
-    "JUnit.UserServiceTest.executor": "Coverage",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHELLCHECK.PATH": "I do mind",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ACER/Downloads/Analysis_with_websocket",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.DemoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminInfoTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AdminInfoTest.getAllUser_paginationMetadata.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.AuthControllerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.CommentControllerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.CommentControllerTest.getAllComments_returns200.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommentControllerTest.updateComment_usesAuthenticatedEmail.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CommentServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.DemoApplicationTests.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.FrontControllerOfPostsTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.GlobalExceptionHandlerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.HealthCheckerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.JwtFilterTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.JwtUtilTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.LogicOfPostsTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.LogicOfPostsTest.getPostsByUserEmailReturnsCachedResponseWhenPresent.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PostRealtimePublisherTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReactionControllerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ReactionServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.RedisServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SentimentAiServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SentimentConsumerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.SpringSecurityTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserDetailsServiceImplTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;I do mind&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ACER/Downloads/Analysis_with_websocket&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.DemoApplication">
     <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.sentiment_analysis.DemoApplication" />
@@ -230,17 +235,6 @@
       <updated>1779179454978</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/sentiment_analysis/public_controller/controller/AuthController.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Analysis_with_websocket$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1781869389491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">

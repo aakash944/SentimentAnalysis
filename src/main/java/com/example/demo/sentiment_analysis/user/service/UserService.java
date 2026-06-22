@@ -147,7 +147,7 @@ public class UserService {
             }
 
             if (usersDto.getPassword() != null && !usersDto.getPassword().isEmpty()) {
-                user.setPassword(usersDto.getPassword());
+                user.setPassword(encoder.encode(usersDto.getPassword()));
             }
 
             return userRepo.save(user);
