@@ -418,17 +418,18 @@ public class CommentService {
                     "COMMENT_DELETED",
                     userEmail
             );
+
         } catch (Exception e) {
             log.error("Failed to delete comment {} by user {}", id, userEmail, e);
             throw e;
         }
     }
 
-    public Comment updateComment(ObjectId id, CommentRequest commentDto, String userEmail) throws AccessDeniedException {
+    public CommentResponseDto  updateComment(ObjectId id, CommentRequest commentDto, String userEmail) throws AccessDeniedException {
         try {
             Users user = userRepo.findByUserEmail(userEmail);
             if (user == null) {
-                throw new UsernameNotFoundException("User not found");
+                throw new UserNotFoundException("User not found");
             }
             Comment existingComment = commentRepo.findById(id)
                     .orElseThrow(() -> new CommentNotFoundException("Comment not found"));
@@ -453,7 +454,22 @@ public class CommentService {
                 existingComment.setText(commentDto.getText());
             }
             existingComment.setUpdatedAt(LocalDateTime.now());
-            return commentRepo.save(existingComment);
+            Comment savedComment = commentRepo.save(existingComment);
+
+            kafkaTemplate.send("comments-topic", savedComment.getId().toHexString(), savedComment.getId().toHexString() + "::"
+                    + savedComment.getText());
+
+            return new CommentResponseDto(
+                    savedComment.getId().toHexString(),
+                    savedComment.getPostId().toHexString(),
+                    user.getUserEmail(),
+                    savedComment.getText(),
+                    savedComment.getSentiment(),
+                    savedComment.getConfidence(),
+                    savedComment.getUpdatedAt()
+            );
+
+
         } catch (Exception e) {
             log.error("Failed to update comment {} by user {}", id, userEmail, e);
             throw e;
